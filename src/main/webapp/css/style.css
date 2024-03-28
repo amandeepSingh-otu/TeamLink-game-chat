@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #60c055;
+    color: #80da0e;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+.left-section{
+    flex: 1;
+    background-color: #c4e0a0;
+    overflow-y: auto;
+    border: 2px solid #58b61a;
+    border-radius: 10px;
+}
+.right-section {
+    flex: 1;
+    background-color: #debe7a;
+    overflow-y: auto;
+    border: 2px solid #776e42;
+    border-radius: 10px;
+}
+.right-section{
+    flex:3;
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+#roomNumberDiv{
+    width:25%;
+    height:3%;
+    position: fixed;
+    bottom:15%;
+    z-index: 1000;
+    margin: 0 auto;
+    text-align: center;
+    border-top:2px solid #776e42;
+}
+#roomNumberInput{
+    width: 90%;
+    height: 100%;
+    padding: 0.25%;
+    margin: 4px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+#chatInput{
+    width: 90%;
+    height: 100%;
+    padding: 2px;
+    margin: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+#chatInputDiv{
+    width:75%;
+    height:3%;
+    padding: 0.25%;
+    position: fixed;
+    bottom:15%;
+    z-index: 1000;
+    margin: 0 auto;
+    text-align: center;
+    border-top:2px solid #776e42;
+}
+#send{
+
+}
