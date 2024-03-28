@@ -23,12 +23,45 @@
 </head>
 
 <body>
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
 
-<!-- Add your site or application content here -->
+<div class="container">
+  <!--This part is divided into two session and chat and rooms-->
+  <section class="left-section">
+    <div id=" groups">
+      <h2> Room ready to be Joined:</h2>
+      <ul id="addGroups"></ul>
+    </div>
+    <div id="roomNumberDiv">
+      <label>
+        <input id="roomNumberInput" type="text" placeholder="Enter room Number">
+      </label>
+      <button id="createRoom" >Create or Join Room</button>
+    </div>
+
+  </section>
+  <section class="right-section">
+    <div id="messageArea">
+    <h2 >messages:</h2>
+    </div>
+    <div id="chatInputDiv">
+      <label>
+        <input id="chatInput" type="text" placeholder="Enter room Number">
+      </label>
+      <button id="send" >send</button>
+    </div>
 
 
-
-
+  </section>
+</div>
+<footer class="footer">
+  <p>jhdcfash</p>
+</footer>
 
 
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
