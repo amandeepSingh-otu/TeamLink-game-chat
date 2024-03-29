@@ -1,15 +1,13 @@
 package com.example.webchatserver;
-import java.io.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import jakarta.websocket.server.PathParam;
-import org.apache.commons.lang3.RandomStringUtils;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 @WebServlet(name = "userInroomServlets", value = "/user-Inroom-servlets/*")
 public class userInroomServlets extends HttpServlet {
@@ -35,7 +33,6 @@ public class userInroomServlets extends HttpServlet {
         }
         else{
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
         }
 
     }
