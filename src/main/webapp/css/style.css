@@ -98,4 +98,12 @@ nav ul li a {
 #send{
 
 }
+.messageArea{
+    background-color: lightblue;
+    width: 150vh; /* Set the width of the div */
+    height: 60vh;
+
+    overflow-y: auto;
+}
+
 
