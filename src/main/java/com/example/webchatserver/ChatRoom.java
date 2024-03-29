@@ -28,6 +28,9 @@ public class ChatRoom {
     public String getCode() {
         return code;
     }
+    public String getUserName(String userid){
+        return users.get(userid);
+    }
 
     public Map<String, String> getUsers() {
         return users;
