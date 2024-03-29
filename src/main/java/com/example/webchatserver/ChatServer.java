@@ -7,6 +7,9 @@ import jakarta.websocket.server.ServerEndpoint;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -15,7 +18,8 @@ import java.io.IOException;
 @ServerEndpoint(value="/ws/{roomID}")
 public class ChatServer {
 
-    // contains a static List of ChatRoom used to control the existing rooms and their users
+    // contains a hashmap about rooms and their ids
+    public static Map<String, ChatRoom> roomList = new HashMap<String, ChatRoom>();
 
     // you may add other attributes as you see fit
 
@@ -24,10 +28,19 @@ public class ChatServer {
     @OnOpen
     public void open(@PathParam("roomID") String roomID, Session session) throws IOException, EncodeException {
 
-        session.getBasicRemote().sendText("First sample message to the client");
-//        accessing the roomID parameter
-        System.out.println(roomID);
 
+        String userId=session.getId();
+        //check if room already exist or not
+        if(roomList.containsKey(roomID)){
+            //we are putting user in the room , but they haven't entered the name yet
+            roomList.get(roomID).setUserName(userId,"");
+        }
+        else{
+            //room doesnot exist so creating a new room
+            roomList.put(roomID,new ChatRoom(roomID,userId));
+        }
+        //ask user to enter the message to get started
+        session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"Enter your UserName below to get started\"}");
 
 
     }
@@ -35,20 +48,62 @@ public class ChatServer {
     @OnClose
     public void close(Session session) throws IOException, EncodeException {
         String userId = session.getId();
+
         // do things for when the connection closes
+        for (Map.Entry<String, ChatRoom> room : roomList.entrySet()) {
+            if (room.getValue().inRoom(userId)) {
+                String userName = room.getValue().getUserName(userId);
+                String roomId = room.getValue().getCode();
+                for (Session peer : session.getOpenSessions()) {
+                    if (room.getValue().inRoom(peer.getId())) {
+                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + userName + " has left the chat\"}");
+                    }
+                }
+                //if there is no one in room, room is going to be deleted
+                if(room.getValue().getUsers().isEmpty()){
+                    roomList.remove(roomId);
+                }
+            }
+
+        }
     }
 
     @OnMessage
     public void handleMessage(String comm, Session session) throws IOException, EncodeException {
 //        example getting unique userID that sent this message
         String userId = session.getId();
+        JSONObject jsonmsg = new JSONObject(comm);
+        String roomId= (String) jsonmsg.get("roomId");
+        String type = (String)  jsonmsg.get("type");
+        String message = (String) jsonmsg.get("msg");
+        System.out.println(message);
 
-//        Example conversion of json messages from the client
-        //        JSONObject jsonmsg = new JSONObject(comm);
-//        String val1 = (String) jsonmsg.get("attribute1");
-//        String val2 = (String) jsonmsg.get("attribute2");
+        if(roomList.containsKey(roomId)){
+            //if they don't have name this is their first message
+            if(Objects.equals(roomList.get(roomId).getUserName(userId), "")){
+            for(Session peer: session.getOpenSessions()) {
+                roomList.get(roomId).setUserName(userId,message);
+                if (roomList.get(roomId).inRoom(peer.getId()) && peer.getId() != userId) {
+                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + message + " has joined the room\"}");
+                }
 
-        // handle the messages
+                if (peer.getId() == userId){
+                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + message + ", We glad you are here!\"}");
+                }
+            }
+
+            }
+            //other case it's not their first message, so just send the message to everyOne including them
+            else{
+                for(Session peer: session.getOpenSessions()) {
+                    if (roomList.get(roomId).inRoom(peer.getId())) {
+                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+ message +"\"}");
+                    }
+            }
+        }
+        }
+
+
 
 
     }

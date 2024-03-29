@@ -35,25 +35,26 @@
   <section class="left-section">
     <div id=" groups">
       <h2> Room ready to be Joined:</h2>
-      <ul id="addGroups"></ul>
+      <ul id="addRooms"></ul>
+      <h2>Active Users in your Room</h2>
+      <ul id="addUsers"></ul>
     </div>
     <div id="roomNumberDiv">
-      <label>
-        <input id="roomNumberInput" type="text" placeholder="Enter room Number">
-      </label>
-      <button id="createRoom" >Create or Join Room</button>
+
+      <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
     </div>
 
   </section>
   <section class="right-section">
+    <h3 id="roomMessage"></h3>
     <div id="messageArea">
-    <h2 >messages:</h2>
+
     </div>
     <div id="chatInputDiv">
       <label>
         <input id="chatInput" type="text" placeholder="Enter room Number">
       </label>
-      <button id="send" >send</button>
+      <button id="send" onclick="sendMessage()">send</button>
     </div>
 
 
