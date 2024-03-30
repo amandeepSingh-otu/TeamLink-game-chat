@@ -1,6 +1,7 @@
 package com.example.webchatserver;
 import java.io.*;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import jakarta.servlet.http.*;
@@ -16,7 +17,9 @@ public class roomInfoServlets extends HttpServlet {
         // send the random code as the response's content
         PrintWriter out = response.getWriter();
         String roomName="";
-        for(String element:ChatServlet.rooms) roomName += (element + ",");
+        for(Map.Entry<String,ChatRoom> room : ChatServer.roomList.entrySet()) {
+            roomName += (room.getKey() + ",");
+        }
         out.println(roomName);
 
     }

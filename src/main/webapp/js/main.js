@@ -66,6 +66,7 @@ function addUsers(response){
 }
 //this will take the return response( room names) from api and split it and add to list as button
 function addRooms(response){
+
     let users=response.split(",");
     //console.log(users);
     let userList = document.getElementById("addRooms");
@@ -109,9 +110,13 @@ function enterRoom(response){
   //  console.log("enter room response"+response);
     code=response.substring(0,5)
 
-    // refresh the list of rooms to show a new room if you created in list
 
-    getRooms();
+    // refresh the list of rooms to show a new room if you created in list
+    if(ws!==undefined){
+        ws.close();
+        ws=undefined;
+    }
+    refresh();
     // create the web socket
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/"+code);
     document.getElementById("roomMessage").innerHTML ="You are currently in the room "+code;

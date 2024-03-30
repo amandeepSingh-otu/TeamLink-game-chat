@@ -30,6 +30,11 @@ public class ChatServer {
 
 
         String userId=session.getId();
+        for (Map.Entry<String, ChatRoom> room : roomList.entrySet()) {
+            if(room.getValue().getUsers().size()==0){
+                roomList.remove(room.getValue().getCode());
+            }
+        }
         //check if room already exist or not
         if(roomList.containsKey(roomID)){
             //we are putting user in the room , but they haven't entered the name yet
@@ -40,6 +45,9 @@ public class ChatServer {
             roomList.put(roomID,new ChatRoom(roomID,userId));
         }
         //ask user to enter the message to get started
+        for(String chat: roomList.get(roomID).messHistory){
+            session.getBasicRemote().sendText(chat);
+        }
         session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"Enter your UserName below to get started\"}");
 
 
@@ -48,24 +56,30 @@ public class ChatServer {
     @OnClose
     public void close(Session session) throws IOException, EncodeException {
         String userId = session.getId();
+        String roomTobeRemoved="";
 
         // do things for when the connection closes
         for (Map.Entry<String, ChatRoom> room : roomList.entrySet()) {
             if (room.getValue().inRoom(userId)) {
                 String userName = room.getValue().getUserName(userId);
-                String roomId = room.getValue().getCode();
+                roomTobeRemoved = room.getValue().getCode();
                 for (Session peer : session.getOpenSessions()) {
                     if (room.getValue().inRoom(peer.getId())) {
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + userName + " has left the chat\"}");
+                            peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + userName + " has left the chat\"}");
+
+
                     }
                 }
+                room.getValue().removeUser(userId);
                 //if there is no one in room, room is going to be deleted
-                if(room.getValue().getUsers().isEmpty()){
-                    roomList.remove(roomId);
-                }
+
             }
 
         }
+
+
+
+
     }
 
     @OnMessage
@@ -97,9 +111,12 @@ public class ChatServer {
             else{
                 for(Session peer: session.getOpenSessions()) {
                     if (roomList.get(roomId).inRoom(peer.getId())) {
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+ message +"\"}");
+                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+" : " + message +"\"}");
+
                     }
             }
+                //adding message history so we can show the new use
+                roomList.get(roomId).messHistory.add("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+" : " + message +"\"}");
         }
         }
 
