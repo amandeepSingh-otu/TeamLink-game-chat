@@ -81,7 +81,6 @@ function addRooms(response){
                 getRoomMsgs(listItem,user.trim());
             }
 
-
         });
     }
 }
@@ -89,8 +88,10 @@ function addRooms(response){
 function getRoomMsgs(listItem, roomcode) {
     listItem.addEventListener('click', function(event) {
         clearMessageArea();
+
+       enterRoom(roomcode);
+        getRooms();
         getUsers();
-        enterRoom(roomcode);
     });
 }
 
@@ -112,10 +113,10 @@ function enterRoom(response){
 
 
     // refresh the list of rooms to show a new room if you created in list
-    if(ws!==undefined){
-        ws.close();
-        ws=undefined;
-    }
+    //if(ws!==undefined){
+      //  ws.close();
+       // ws=undefined;
+   // }
     refresh();
     // create the web socket
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/"+code);

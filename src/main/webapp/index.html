@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
+ <!-- <link rel="stylesheet" href="css/normalize.css"> -->
   <link rel="stylesheet" href="css/style.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -24,28 +24,40 @@
 
 <body>
 <nav>
+  <div class="nav-text" >Chat Server</div>
   <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="#" onclick="loadMainPage()">Chats</a></li>
+    <li><a href="#" onclick="loadAbout()">About</a></li>
   </ul>
 </nav>
 
-<div class="container">
+<div class="container" id="container">
   <!--This part is divided into two session and chat and rooms-->
   <section class="left-section">
-    <div id=" groups">
-      <h2> Room ready to be Joined:</h2>
-      <ul id="addRooms"></ul>
-      <h2>Active Users in your Room</h2>
-      <ul id="addUsers"></ul>
-    </div>
-    <div id="roomNumberDiv">
+    <div id="groups">
 
-      <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
+      <div>
+        <h2> Chat Availables</h2>
+        <ul id="addRooms" class="rooms">
+
+        </ul>
+      </div>
+      <div id="roomNumberDiv">
+        <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
+      </div>
+
+
+      <div>
+        <h2>Users Active in your chat</h2>
+        <ul id="addUsers">
+
+        </ul>
+      </div>
+
     </div>
 
   </section>
-  <section class="right-section">
+  <section class="right-section" id="right-section">
     <h3 id="roomMessage"></h3>
     <div id="messageArea" class="messageArea">
 
@@ -68,6 +80,7 @@
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
+<script src="js/load.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
