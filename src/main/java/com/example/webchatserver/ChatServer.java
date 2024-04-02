@@ -111,7 +111,7 @@ public class ChatServer {
             else{
                 for(Session peer: session.getOpenSessions()) {
                     if (roomList.get(roomId).inRoom(peer.getId())) {
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+" : " + message +"\"}");
+                        peer.getBasicRemote().sendText("{\"type\": \"chat\",\"userName\":\""+roomList.get(roomId).getUserName(userId)+"\", \"message\":\" " + message +"\"}");
 
                     }
             }

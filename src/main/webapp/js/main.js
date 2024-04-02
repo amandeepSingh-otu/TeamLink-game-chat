@@ -113,10 +113,10 @@ function enterRoom(response){
 
 
     // refresh the list of rooms to show a new room if you created in list
-    //if(ws!==undefined){
-      //  ws.close();
-       // ws=undefined;
-   // }
+    if(ws!==undefined){
+        ws.close();
+        ws=undefined;
+    }
     refresh();
     // create the web socket
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/"+code);
@@ -151,6 +151,7 @@ inputMessage.addEventListener("keyup", function (event) {
 
 //Listen to the event of clicking send button and send message to the server
 function sendMessage(){
+    refresh();
     if (inputMessage.value!=null) {
         let request = {"type": "chat","roomId":code, "msg": inputMessage.value};
         console.log(request);
