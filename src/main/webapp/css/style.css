@@ -196,3 +196,28 @@ nav ul li a:hover {
 
     overflow-y: auto;
 }
+
+.messageHeader{
+    height: 4vh;
+    display: flex;
+    align-items: baseline;
+
+
+}
+.userName{
+    color: darkred;
+    font-size: large;
+
+
+}
+
+.timeStamp{
+    color: dimgrey;
+    font-size: x-small;
+
+}
+
+
+
+
+

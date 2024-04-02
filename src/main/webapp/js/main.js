@@ -117,7 +117,6 @@ function enterRoom(response){
         ws.close();
         ws=undefined;
     }
-    refresh();
     // create the web socket
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/"+code);
     document.getElementById("roomMessage").innerHTML ="You are currently in the room "+code;
@@ -130,9 +129,12 @@ function enterRoom(response){
 
         //Case we have a userName
         if (message.userName != null){
-            document.getElementById("messageArea").innerHTML += "<p><div class='userName'><h3>" +message.userName + "</h3></div><div class='timeStamp'><h5>[" + timestamp() + "]</h5></div>  " + message.message + "</p>";
+            document.getElementById("messageArea").innerHTML +=
+                "<p><div class = messageHeader><span class='userName'>" +message.userName +
+                "</span><span class='timeStamp'>[" + timestamp() + "]</span></div>  " +
+                message.message + "</p>";
         } else{
-            document.getElementById("messageArea").innerHTML += "<p>" + timestamp() + "]  " + message.message + "</p>";
+            document.getElementById("messageArea").innerHTML += "<p>[" + timestamp() + "]  " + message.message + "</p>";
         }
 
 
