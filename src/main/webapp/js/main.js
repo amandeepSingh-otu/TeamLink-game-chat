@@ -127,7 +127,16 @@ function enterRoom(response){
         // parsing the server's message as json
         let message = JSON.parse(event.data);
         // handle message
-        document.getElementById("messageArea").innerHTML += "<p>[" + timestamp() + "]    " + message.message +"</p>";
+
+        //Case we have a userName
+        if (message.userName != null){
+            document.getElementById("messageArea").innerHTML += "<p><div class='userName'><h3>" +message.userName + "</h3></div><div class='timeStamp'><h5>[" + timestamp() + "]</h5></div>  " + message.message + "</p>";
+        } else{
+            document.getElementById("messageArea").innerHTML += "<p>" + timestamp() + "]  " + message.message + "</p>";
+        }
+
+
+        //Case no userName
         refresh();
     }
 
