@@ -145,8 +145,8 @@ function enterRoom(response){
 }
 
 //Listen to the event of pressing key and send message to the server
-let inputMessage=document.getElementById("chatInput");
-inputMessage.addEventListener("keyup", function (event) {
+
+sendMessageUsingEnter=function (event) {
     if (event.key === "Enter" && event.target.value!=null) {
         //we gonna send the room number in the message so it's easier on backend to identify the message
         let request = {"type": "chat","roomId":code, "msg": event.target.value};
@@ -158,11 +158,12 @@ inputMessage.addEventListener("keyup", function (event) {
             console.error("WebSocket connection not open.");
         }
     }
-});
+};
 
 //Listen to the event of clicking send button and send message to the server
 function sendMessage(){
     refresh();
+    let inputMessage=document.getElementById("chatInput");
     if (inputMessage.value!=null) {
         let request = {"type": "chat","roomId":code, "msg": inputMessage.value};
         console.log(request);
