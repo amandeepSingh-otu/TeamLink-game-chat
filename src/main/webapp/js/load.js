@@ -1,8 +1,8 @@
 let divBody=document.getElementById("right-section").innerHTML;
 
-
+window.addEventListener("load", loadMainPage);
 function loadAbout(){
-    //removing all event before swicthing the page
+    //removing all event listeners before switching the page
     let inputMessage=document.getElementById("chatInput");
     inputMessage.removeEventListener("keyup", sendMessageUsingEnter);
     divBody=document.getElementById("right-section").innerHTML;
@@ -12,7 +12,7 @@ function loadAbout(){
 
 }
 function loadMainPage(){
-    //adding all event before swicthing the page
+    //adding all event listeners  before switching the page
     document.getElementById("right-section").innerHTML = divBody;
     let inputMessage=document.getElementById("chatInput");
     inputMessage.addEventListener("keyup", sendMessageUsingEnter);

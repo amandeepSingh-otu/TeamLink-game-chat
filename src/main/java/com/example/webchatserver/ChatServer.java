@@ -16,7 +16,7 @@ import java.util.Objects;
  * This class represents a web socket server, a new connection is created and it receives a roomID as a parameter
  * **/
 @ServerEndpoint(value="/ws/{roomID}")
-public class ChatServer {
+public class    ChatServer {
 
     // contains a hashmap about rooms and their ids
     public static Map<String, ChatRoom> roomList = new HashMap<String, ChatRoom>();
