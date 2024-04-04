@@ -217,6 +217,36 @@ nav ul li a:hover {
 
 }
 
+/* Dark Theme Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode nav {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .left-section, body.dark-mode .right-section, body.dark-mode footer {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .left-section ul li:hover, body.dark-mode .rooms li:hover {
+    background: #333;
+}
+
+body.dark-mode #createRoom, body.dark-mode #createRoom:hover {
+    background: #333;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+
 
 
 

@@ -88,6 +88,15 @@
   ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
 </script>
 <script src="https://www.google-analytics.com/analytics.js" async></script>
+<button id="themeToggle" style="position: fixed; right: 20px; top: 20px; z-index: 1001;">Toggle Theme</button>
+
+<script>
+  const themeToggleBtn = document.getElementById('themeToggle');
+  themeToggleBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
 </body>
 
 </html>
