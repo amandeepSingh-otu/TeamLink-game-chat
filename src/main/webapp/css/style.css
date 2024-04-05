@@ -69,6 +69,7 @@ nav ul li a:hover {
     transition: 0.5s;
     cursor: pointer;
     margin-top: 0px;
+    color: #03a9f4;
 
 
 }
@@ -104,13 +105,17 @@ nav ul li a:hover {
 }
 .right-section {
     flex: 1;
-    background-color: #debe7a;
+    background-color: #03a9f4;
     overflow-y: auto;
-    border: 2px solid #776e42;
-    border-radius: 10px;
+    /*border: 2px solid #776e42;
+    border-radius: 10px;*/
 }
 .right-section{
     flex:3;
+
+    background-color: #03a9f4;
+
+
 }
 .footer {
     background-color: #333;
@@ -149,6 +154,32 @@ nav ul li a:hover {
     transition: 0.5s;
 
 }
+.btn, #send{
+
+    color: #03a9f4;
+    background:#fff ;
+
+    border:  solid ;
+    border-radius: 20px;
+    cursor: pointer;
+
+    transition: 0.5s;
+padding: 8px;
+}
+.btn:hover, #send:hover{
+    color: #fff;
+    background: #03a9f4;
+
+
+    border:  solid ;
+    border-radius: 20px;
+    cursor: pointer;
+
+
+    transform: scale(1.1);
+    border-color: #03a9f4;
+
+}
 #createRoom:hover{
     width:70%;
     height: 30px;
@@ -172,8 +203,8 @@ nav ul li a:hover {
     padding: 2px;
     margin: 2px;
     font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+   /* border: 1px solid #ccc;
+    border-radius: 3px;*/
 }
 #chatInputDiv{
     width:75%;
@@ -184,7 +215,7 @@ nav ul li a:hover {
     z-index: 1000;
     margin: 0 auto;
     text-align: center;
-    border-top:2px solid #776e42;
+   /* border-top:2px solid #776e42;*/
 }
 #send{
 
@@ -193,32 +224,31 @@ nav ul li a:hover {
     background-color: lightblue;
     width: 150vh;
     height: 60vh;
+
     overflow-y: auto;
-    padding-left: 2%;
 }
 
 .messageHeader{
+    height: 4vh;
     display: flex;
     align-items: baseline;
-    font-size: large;
+
 
 }
 .userName{
-    font-size: x-large;
-    color: #640303;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #25bcff;
+    font-size: large;
+
+
 }
 
 .timeStamp{
     color: dimgrey;
-    font-size: small;
-    color: #0d32ad;
-    padding: 0.5%;
+    font-size: x-small;
 
 }
 
-
+/* Dark Theme Styles */
 body.dark-mode {
     background-color: #121212;
     color: #931818;
@@ -246,18 +276,58 @@ body.dark-mode .right-section{
 }
 
 body.dark-mode nav ul li a {
+    color:#e0e0e0;
+}
+body.dark-mode .left-section ul li  {
+    background-color: #333;
     color: #e0e0e0;
+    border: solid;
+
+    border-color: #333;
+
+}
+ body.dark-mode .rooms li:hover {
+    background: #e0e0e0;
+     border-color: #e0e0e0;
+     color: black;
+
 }
 
-body.dark-mode .left-section ul li:hover, body.dark-mode .rooms li:hover {
-    background: #6150b0;
-}
-
-body.dark-mode #createRoom, body.dark-mode #createRoom:hover {
+body.dark-mode #createRoom {
     background: #333;
     color: #e0e0e0;
-    border-color: #e0e0e0;
+    border: solid;
+    border-radius: 20px;
+    border-color: #333;
+
 }
+ body.dark-mode #createRoom:hover{
+     background:#e0e0e0;
+     color: #333;
+
+
+ }
+body.dark-mode .userName, body.dark-mode .timeStamp, body.dark-mode #messageArea, body.dark-mode #roomMessage,body.dark-mode p
+{
+    color: #e0e0e0;
+}
+.userName,  .timeStamp,  #messageArea,  #roomMessage, p{
+    color: white;
+}
+body.dark-mode .btn ,body.dark-mode #send{
+    background: #333;
+    color: #e0e0e0;
+    border: solid;
+    border-radius: 20px;
+    border-color: #333;
+
+}
+body.dark-mode .btn:hover,body.dark-mode #send:hover{
+    background:#e0e0e0;
+    color: #333;
+
+}
+
 
 #joiningMessage{
     margin: 5px 0;
