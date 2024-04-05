@@ -1,9 +1,10 @@
 # WebSocket Chat Server
+![VideoForChatServer.mp4](VideoForChatServer.mp4)
 ![img.png](img.png)![img_1.png](img_1.png)![img_2.png](img_2.png)
 ## Project Information
 - **Course**: CSCI 2020U: Software Systems Development and Integration
 
-- **Client Side:**
+- **Client Side:**S
     - Uses JavaScript, css, HTML
     - Connects to a WebSocket server.
     - Users can join existing chat rooms or create their own.
