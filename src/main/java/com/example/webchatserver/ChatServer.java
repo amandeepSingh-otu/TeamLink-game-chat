@@ -44,10 +44,7 @@ public class    ChatServer {
             //room doesnot exist so creating a new room
             roomList.put(roomID,new ChatRoom(roomID,userId));
         }
-        //ask user to enter the message to get started
-        for(String chat: roomList.get(roomID).messHistory){
-            session.getBasicRemote().sendText(chat);
-        }
+
         session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"Enter your UserName below to get started\"}");
 
 
@@ -115,8 +112,6 @@ public class    ChatServer {
 
                     }
             }
-                //adding message history so we can show the new use
-                roomList.get(roomId).messHistory.add("{\"type\": \"chat\", \"message\":\""+roomList.get(roomId).getUserName(userId)+" : " + message +"\"}");
         }
         }
 

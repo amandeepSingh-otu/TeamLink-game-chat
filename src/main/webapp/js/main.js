@@ -131,14 +131,12 @@ function enterRoom(response){
         if (message.userName != null){
             document.getElementById("messageArea").innerHTML +=
                 "<p><div class = messageHeader><span class='userName'>" +message.userName +
-                "</span><span class='timeStamp'>[" + timestamp() + "]</span></div>  " +
-                message.message + "</p>";
+                "</span><span class='timeStamp'>[" + timestamp() + "]</span></div> <span id=normalMsg'> " +
+                message.message + "</span></p>";
         } else{
-            document.getElementById("messageArea").innerHTML += "<p>[" + timestamp() + "]  " + message.message + "</p>";
+            document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>[" + timestamp() + "]  " + message.message + "</p>";
         }
 
-
-        //Case no userName
         refresh();
     }
 

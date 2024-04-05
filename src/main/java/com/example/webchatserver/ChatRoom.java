@@ -14,7 +14,6 @@ public class ChatRoom {
 
     //each user has an unique ID associate to their ws session and their username
     private Map<String, String> users = new HashMap<String, String>() ;
-    public List<String> messHistory=new ArrayList<>();
 
     // when created the chat room has at least one user
     public ChatRoom(String code, String user){
