@@ -30,7 +30,7 @@
   - Send Message Button: Added a dedicated "Send Message" button for ease of use. Users can now click the "Send Message" button to quickly send messages in the chat room.
   - Active Users List: Implemented a feature to display the list of active users in the chat room. Users can now see who is currently online and actively participating in the chat.
   - Room List as Buttons: Introduced room list as clickable buttons for seamless navigation. Users can easily enter different chat rooms by clicking on the respective room buttons.
-  -The server checks the number of people in the room after someone leaves. If they are the last person, the room will automatically be deleted.
+  - The server checks the number of people in the room after someone leaves. If they are the last person, the room will automatically be deleted.
 
 - ### User Interface Improvements
   - Different Message Styles: Messages now display entering or leaving users in a different font style, making it easier to distinguish between different types of messages.
