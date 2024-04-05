@@ -136,7 +136,7 @@ nav ul li a:hover {
     border-bottom:1px solid rgba(200, 198, 198, 0.82) ;
     margin-bottom: 2%;
 }
-#createRoom{
+#createRoom, #refresh{
     width:70%;
     height: 30px;
 
@@ -152,7 +152,7 @@ nav ul li a:hover {
     transition: 0.5s;
 
 }
-#createRoom:hover{
+#createRoom:hover, #refresh:hover{
     width:70%;
     height: 30px;
     color: #03a9f4;
@@ -259,12 +259,12 @@ body.dark-mode .left-section ul li:hover, body.dark-mode .rooms li:hover {
     background: #6150b0;
 }
 
-body.dark-mode #createRoom, body.dark-mode #createRoom:hover {
+body.dark-mode #createRoom, body.dark-mode #createRoom:hover,body.dark-mode #refresh, body.dark-mode #refresh:hover {
     background: #333;
     color: #e0e0e0;
     border-color: #e0e0e0;
 }
- body.dark-mode #createRoom:hover{
+ body.dark-mode #createRoom:hover,body.dark-mode #refresh:hover{
      background:#e0e0e0;
      color: #333;
 

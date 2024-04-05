@@ -1,38 +1,60 @@
-# Assignment 02 - Web Chat Server (Instructions)
-> Course: CSCI 2020U: Software Systems Development and Integration
+# WebSocket Chat Server
+![img.png](img.png)![img_1.png](img_1.png)![img_2.png](img_2.png)
+## Project Information
+- **Course**: CSCI 2020U: Software Systems Development and Integration
 
-This is the template for your Assignment 02.
+- **Client Side:**
+    - Uses JavaScript, css, HTML
+    - Connects to a WebSocket server.
+    - Users can join existing chat rooms or create their own.
+    - Send and receive messages in real-time.
+    - Toggle between dark and light modes for the UI.
+- **Server Side:**
+    - Uses Java
+    - WebSocket server for handling real-time messaging.
+    - Servlets for providing active user info, existing rooms
+    - Manages connections, messages, and room memberships.
 
-## Overview
-You want to create a web chat server with multiple rooms. This will allow you and your friends to chat privately.
+## Group Members (Contribution)
+- Amandeep Singh (25%)
+- Simon Gotera Vargas (25%)
+- Josiah Jehoiakim Yap  (25%)
+- Tyler Valentini  (25%)
 
-- Check the `Canvas/Assingments/Assignment 02` for more the detailed instructions.
+## Improvements
 
-### WebChatServer - Endpoints
+- ### Interaction
+  - Send Message Button: Added a dedicated "Send Message" button for ease of use. Users can now click the "Send Message" button to quickly send messages in the chat room.
+  - Active Users List: Implemented a feature to display the list of active users in the chat room. Users can now see who is currently online and actively participating in the chat.
+  - Room List as Buttons: Introduced room list as clickable buttons for seamless navigation. Users can easily enter different chat rooms by clicking on the respective room buttons.
 
-**Connect to the websocket**
+- ### User Interface Improvements
+  - Different Message Styles: Messages now display entering or leaving users in a different font style, making it easier to distinguish between different types of messages.
+  - Dark/Light Theme Button: Added a toggle button to switch between dark and light themes for the UI. Users can now customize the chat room interface based on their preference.
+  - Hover Effects: Applied hover effects to almost all UI buttons and elements, improving the overall aesthetic and interactivity of the chat room.
+  - Date Display for Messages: Messages now include date and timestamps, providing users with context on when each message was sent.
+  - Centered Joining and Leaving Messages: Joining and leaving messages are now displayed in the center of the chat window, ensuring they are prominently visible to all users.
+  
 
-From the `ChatServer` class. This will create a new client connect to the web server. The server and client communicate using `json` messages.
-- `ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/{roomID}`
+## How to Run the Project Locally
 
+- ####  Download GlassFish Server
+    - Download and install GlassFish Server from the official website or a trusted source.
 
-**GET a new (unique) room code**
+- #### Open Project in IntelliJ
+    - Open IntelliJ IDEA and load the project containing the server-side code.
 
-From the `ChatServlet` class. This will return a `text/plain` content type.
-- `http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet`
-See a sample of the response data:
-```
-1B9FN
-```
+- ####  Edit configuration
+    - In IntelliJ, go to file -> edit configuration and set up maven project to deploy WAR exploded locally.
 
-### WebChatServer - client
+- #### Deploy Locally
+    - Deploy the generated WAR file to GlassFish Server by clicking on run project button on top.
+    - Add Multiple tabs using URl in browser to see all the function
+    - Project can be deployed remotely to uses it for inter device communication
 
-Your client is in the `webapp` folder, when started the application will run at `http://localhost:8080/WSChatServer-1.0-SNAPSHOT/`; which will load the `index.html` file.
+## Other Resources
+  - Some boilerplate code was provided by instructor.
 
-Your client-side code will be in the `js/main.js` javascript file.
-
-> Obs. Feel free to create other helper classes as you see fit.
-> 
 
 
 
