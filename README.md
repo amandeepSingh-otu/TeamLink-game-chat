@@ -1,5 +1,9 @@
 # WebSocket Chat Server
-![VideoForChatServer.mp4](VideoForChatServer.mp4)
+
+<video width="530" height="400" controls>
+  <source src="VideoForChatServer.mp4" type="video/mp4">
+</video>
+
 ![img.png](img.png)![img_1.png](img_1.png)![img_2.png](img_2.png)
 ## Project Information
 - **Course**: CSCI 2020U: Software Systems Development and Integration
