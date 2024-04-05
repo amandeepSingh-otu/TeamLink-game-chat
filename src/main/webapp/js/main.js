@@ -116,7 +116,7 @@ function enterRoom(response){
     if(ws!==undefined){
         ws.close();
         ws=undefined;
-    }
+   }
     // create the web socket
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/"+code);
     document.getElementById("roomMessage").innerHTML ="You are currently in the room "+code;
