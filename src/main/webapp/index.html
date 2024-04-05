@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
+ <!-- <link rel="stylesheet" href="css/normalize.css"> -->
   <link rel="stylesheet" href="css/style.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -24,49 +24,64 @@
 
 <body>
 <nav>
+  <div class="nav-text" >Chat Server</div>
   <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="#" onclick="loadMainPage()">Chats</a></li>
+    <li><a href="#" onclick="loadAbout()">About</a></li>
   </ul>
 </nav>
 
-<div class="container">
+<div class="container" id="container">
   <!--This part is divided into two session and chat and rooms-->
   <section class="left-section">
-    <div id=" groups">
-      <h2> Room ready to be Joined:</h2>
-      <ul id="addGroups"></ul>
-    </div>
-    <div id="roomNumberDiv">
-      <label>
-        <input id="roomNumberInput" type="text" placeholder="Enter room Number">
-      </label>
-      <button id="createRoom" >Create or Join Room</button>
+    <div id="groups">
+
+      <div>
+        <h2> Chats Available</h2>
+        <ul id="addRooms" class="rooms">
+
+        </ul>
+      </div>
+      <div id="roomNumberDiv">
+        <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
+        <button id="refresh" onclick="getRooms()">Get updated List</button>
+      </div>
+
+
+      <div>
+        <h2>Users Active in your chat</h2>
+        <ul id="addUsers">
+
+        </ul>
+      </div>
+
     </div>
 
   </section>
-  <section class="right-section">
-    <div id="messageArea">
-    <h2 >messages:</h2>
+  <section class="right-section" id="right-section">
+    <h3 id="roomMessage"></h3>
+    <div id="messageArea" class="messageArea">
+
     </div>
     <div id="chatInputDiv">
       <label>
-        <input id="chatInput" type="text" placeholder="Enter room Number">
+        <input id="chatInput" type="text" placeholder="Enter Your message over here">
       </label>
-      <button id="send" >send</button>
+      <button id="send" onclick="sendMessage()">send</button>
     </div>
 
 
   </section>
 </div>
 <footer class="footer">
-  <p>jhdcfash</p>
+  <p>CSCI 2020U: Software Development and Integration, Ontario tech University</p>
 </footer>
 
 
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
+<script src="js/load.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
@@ -74,6 +89,17 @@
   ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
 </script>
 <script src="https://www.google-analytics.com/analytics.js" async></script>
+<button id="themeToggle" style="position: fixed; right: 20px; top: 20px; z-index: 1001;">Toggle Theme</button>
+
+<script>
+  const themeToggleBtn = document.getElementById('themeToggle');
+  themeToggleBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+
+  });
+  themeToggleBtn.setAttribute("class","btn");
+</script>
+
 </body>
 
 </html>
