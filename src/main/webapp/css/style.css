@@ -69,7 +69,6 @@ nav ul li a:hover {
     transition: 0.5s;
     cursor: pointer;
     margin-top: 0px;
-    color: #03a9f4;
 
 
 }
@@ -105,27 +104,26 @@ nav ul li a:hover {
 }
 .right-section {
     flex: 1;
-    background-color: #03a9f4;
+    background-color: lightblue;
     overflow-y: auto;
-    /*border: 2px solid #776e42;
-    border-radius: 10px;*/
+    border: 2px solid #776e42;
+    border-radius: 10px;
 }
 .right-section{
     flex:3;
-
-    background-color: #03a9f4;
-
-
 }
 .footer {
     background-color: #333;
-    color: #fff;
     text-align: center;
     height:5%;
     position: fixed;
     width: 100%;
     bottom: 0;
     z-index: 1000;
+}
+.footer>p{
+
+    color: #f5e9e9;
 }
 
 #roomNumberDiv{
@@ -154,32 +152,6 @@ nav ul li a:hover {
     transition: 0.5s;
 
 }
-.btn, #send{
-
-    color: #03a9f4;
-    background:#fff ;
-
-    border:  solid ;
-    border-radius: 20px;
-    cursor: pointer;
-
-    transition: 0.5s;
-padding: 8px;
-}
-.btn:hover, #send:hover{
-    color: #fff;
-    background: #03a9f4;
-
-
-    border:  solid ;
-    border-radius: 20px;
-    cursor: pointer;
-
-
-    transform: scale(1.1);
-    border-color: #03a9f4;
-
-}
 #createRoom:hover{
     width:70%;
     height: 30px;
@@ -196,15 +168,18 @@ padding: 8px;
     border-color: #fff;
 
 }
-
+#send{
+    height: 100%;
+    margin: 2%;
+    font-size: 14px;
+    width:10%
+}
 #chatInput{
-    width: 90%;
+    width: 80%;
     height: 100%;
     padding: 2px;
     margin: 2px;
     font-size: 14px;
-   /* border: 1px solid #ccc;
-    border-radius: 3px;*/
 }
 #chatInputDiv{
     width:75%;
@@ -215,21 +190,18 @@ padding: 8px;
     z-index: 1000;
     margin: 0 auto;
     text-align: center;
-   /* border-top:2px solid #776e42;*/
+    border-top:2px solid #776e42;
 }
-#send{
 
-}
 .messageArea{
     background-color: lightblue;
     width: 150vh;
     height: 60vh;
-
     overflow-y: auto;
+    padding-left: 2%;
 }
 
 .messageHeader{
-    height: 4vh;
     display: flex;
     align-items: baseline;
 
@@ -244,11 +216,13 @@ padding: 8px;
 
 .timeStamp{
     color: dimgrey;
-    font-size: x-small;
+    font-size: small;
+    color: #0d32ad;
+    padding: 0.5%;
 
 }
 
-/* Dark Theme Styles */
+
 body.dark-mode {
     background-color: #121212;
     color: #931818;
@@ -260,14 +234,12 @@ body.dark-mode nav {
 
 body.dark-mode .left-section {
     background-color: #242424;
-    color: #651414;
+    color: #b48d8d;
 }
-body.dark-mode.footer{
-    color: #f5e9e9;
-}
+
 body.dark-mode.left-section.messageArea{
     background-color: #242424;
-    color:white;
+    color: #937272;
 }
 
 body.dark-mode .right-section{
@@ -281,25 +253,16 @@ body.dark-mode nav ul li a {
 body.dark-mode .left-section ul li  {
     background-color: #333;
     color: #e0e0e0;
-    border: solid;
-
-    border-color: #333;
-
-}
- body.dark-mode .rooms li:hover {
-    background: #e0e0e0;
-     border-color: #e0e0e0;
-     color: black;
-
 }
 
-body.dark-mode #createRoom {
+body.dark-mode .left-section ul li:hover, body.dark-mode .rooms li:hover {
+    background: #6150b0;
+}
+
+body.dark-mode #createRoom, body.dark-mode #createRoom:hover {
     background: #333;
     color: #e0e0e0;
-    border: solid;
-    border-radius: 20px;
-    border-color: #333;
-
+    border-color: #e0e0e0;
 }
  body.dark-mode #createRoom:hover{
      background:#e0e0e0;
@@ -307,14 +270,21 @@ body.dark-mode #createRoom {
 
 
  }
-body.dark-mode .userName, body.dark-mode .timeStamp, body.dark-mode #messageArea, body.dark-mode #roomMessage,body.dark-mode p
+ body.dark-mode .timeStamp, body.dark-mode #messageArea, body.dark-mode #roomMessage,body.dark-mode p
 {
     color: #e0e0e0;
 }
-.userName,  .timeStamp,  #messageArea,  #roomMessage, p{
-    color: white;
+body.dark-mode .userName{
+    color: #8072c4;
 }
-body.dark-mode .btn ,body.dark-mode #send{
+.userName{
+    color: #482dc4;
+}
+.timeStamp,  #messageArea,  #roomMessage, p{
+    color: #080809;
+
+}
+body.dark-mode .btn ,body.dark-mode #send,body.dark-mode #messageArea{
     background: #333;
     color: #e0e0e0;
     border: solid;

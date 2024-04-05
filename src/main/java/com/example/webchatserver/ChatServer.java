@@ -59,6 +59,7 @@ public class    ChatServer {
         for (Map.Entry<String, ChatRoom> room : roomList.entrySet()) {
             if (room.getValue().inRoom(userId)) {
                 String userName = room.getValue().getUserName(userId);
+                //automatically remove room if there is no user
                 roomTobeRemoved = room.getValue().getCode();
                 for (Session peer : session.getOpenSessions()) {
                     if (room.getValue().inRoom(peer.getId())) {
@@ -95,10 +96,12 @@ public class    ChatServer {
             for(Session peer: session.getOpenSessions()) {
                 roomList.get(roomId).setUserName(userId,message);
                 if (roomList.get(roomId).inRoom(peer.getId()) && peer.getId() != userId) {
+                    //inform peeer about joining
                     peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + message + " has joined the room\"}");
                 }
 
                 if (peer.getId() == userId){
+                    //welcome user when joining
                     peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"" + message + ", We glad you are here!\"}");
                 }
             }
@@ -108,6 +111,7 @@ public class    ChatServer {
             else{
                 for(Session peer: session.getOpenSessions()) {
                     if (roomList.get(roomId).inRoom(peer.getId())) {
+                        //send message to people in same room
                         peer.getBasicRemote().sendText("{\"type\": \"chat\",\"userName\":\""+roomList.get(roomId).getUserName(userId)+"\", \"message\":\" " + message +"\"}");
 
                     }

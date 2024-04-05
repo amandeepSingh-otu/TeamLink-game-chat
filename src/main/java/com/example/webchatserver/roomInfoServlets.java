@@ -7,7 +7,7 @@ import java.util.Set;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import org.apache.commons.lang3.RandomStringUtils;
-
+//return all the active rooms
 @WebServlet(name = "roomInfoServlets", value = "/room-info-servlets")
 public class roomInfoServlets extends HttpServlet {
 

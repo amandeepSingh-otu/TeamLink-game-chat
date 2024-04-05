@@ -9,14 +9,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+
+//this servlets takes room number and return the user active in that chat
 @WebServlet(name = "userInroomServlets", value = "/user-Inroom-servlets/*")
 public class userInroomServlets extends HttpServlet {
 
-    //static so this set is unique
-
-    /**
-     * Method generates unique room codes
-     * **/
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String userName="";

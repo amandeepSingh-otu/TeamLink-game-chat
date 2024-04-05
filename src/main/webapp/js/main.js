@@ -1,6 +1,5 @@
 let ws;
 let code;
-let rooms = {};
 function newRoom(){
     // calling the ChatServlet to retrieve a new room ID
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet";
@@ -97,11 +96,12 @@ function getRoomMsgs(listItem, roomcode) {
 
 
 
+//this function generates time stamp for the chat
 
 function timestamp() {
     let d = new Date(), minutes = d.getMinutes();
     if (minutes < 10) minutes = '0' + minutes;
-    return d.getHours() + ':' + minutes;
+    return d.getDay()+"/"+d.getMonth()+"/"+d.getFullYear()+" at "+d.getHours() + ':' + minutes;
 }
 
 
@@ -134,7 +134,8 @@ function enterRoom(response){
                 "</span><span class='timeStamp'>[" + timestamp() + "]</span></div> <span id=normalMsg'> " +
                 message.message + "</span></p>";
         } else{
-            document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>[" + timestamp() + "]  " + message.message + "</p>";
+            document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>"+ message.message + "<span class='timeStamp'>[" + timestamp() + "] </span> </p" +
+                ">";
         }
 
         refresh();
