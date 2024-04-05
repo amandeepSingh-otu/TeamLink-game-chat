@@ -1,6 +1,6 @@
 # WebSocket Chat Server
 
-[![Click to play video](img.png)](VideoForChatServer.mp4)
+[![Click to play video](img.png)](https://drive.google.com/file/d/1JkhwsAqloMuNwwxwfC-CSqSr8mE20izE/view?usp=sharing&t=3)
 
 ![img.png](img.png)![img_1.png](img_1.png)![img_2.png](img_2.png)
 ## Project Information
