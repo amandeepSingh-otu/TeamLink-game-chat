@@ -12,10 +12,17 @@ function loadAbout(){
 
 }
 function loadMainPage(){
+
+}
+function loadMultiplayer(){
     //adding all event listeners  before switching the page
     document.getElementById("right-section").innerHTML = divBody;
     let inputMessage=document.getElementById("chatInput");
     inputMessage.addEventListener("keyup", sendMessageUsingEnter);
     console.log("Main");
+
+}
+
+function loadCompVsHuman(){
 
 }

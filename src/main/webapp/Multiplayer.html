@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplayer landing page</title>
+  <style>
+    /* Hide the entire page by default */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="container">
+    <!--This part is divided into two session and chat and rooms-->
+    <section class="left-section">
+        <div id="groups">
+
+            <div>
+                <h2> Chats Available</h2>
+                <ul id="addRooms" class="rooms">
+
+                </ul>
+            </div>
+            <div id="roomNumberDiv">
+                <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
+                <button id="refresh" onclick="getRooms()">Get updated List</button>
+            </div>
+
+
+            <div>
+                <h2>Users Active in your chat</h2>
+                <ul id="addUsers">
+
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="right-section" id="right-section">
+        <h3 id="roomMessage"></h3>
+        <div id="messageArea" class="messageArea">
+
+        </div>
+        <div id="chatInputDiv">
+            <label>
+                <input id="chatInput" type="text" placeholder="Enter Your message over here">
+            </label>
+            <button id="send" onclick="sendMessage()">send</button>
+        </div>
+
+
+    </section>
+</div>
+</body>
+</html>

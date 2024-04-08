@@ -309,7 +309,17 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 }
 
 
+#Start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This will make the container take the full height of the viewport */
+    background-color: #7f72bd;
+}
 
-
-
+#Start img {
+    height: 50%;
+    max-width: 45%; /* Added maximum width to prevent images from becoming too wide */
+    margin: 10%; /* Optional margin between the images */
+}
 

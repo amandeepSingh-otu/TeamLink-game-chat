@@ -1,8 +1,5 @@
 # WebSocket Chat Server
 
-[[Click to watch demonstration video]](https://drive.google.com/file/d/1JkhwsAqloMuNwwxwfC-CSqSr8mE20izE/preview)
-
-![img.png](images/img.png)![img_1.png](images/img_1.png)![img_2.png](images/img_2.png)
 ## Project Information
 - **Course**: CSCI 2020U: Software Systems Development and Integration
 

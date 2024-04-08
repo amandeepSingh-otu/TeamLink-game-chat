@@ -26,53 +26,16 @@
 <nav>
   <div class="nav-text" >Chat Server</div>
   <ul>
-    <li><a href="#" onclick="loadMainPage()">Chats</a></li>
+    <li><a href="#" onclick="loadMultiplayer()">Games</a></li>
     <li><a href="#" onclick="loadAbout()">About</a></li>
   </ul>
 </nav>
-
-<div class="container" id="container">
-  <!--This part is divided into two session and chat and rooms-->
-  <section class="left-section">
-    <div id="groups">
-
-      <div>
-        <h2> Chats Available</h2>
-        <ul id="addRooms" class="rooms">
-
-        </ul>
-      </div>
-      <div id="roomNumberDiv">
-        <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
-        <button id="refresh" onclick="getRooms()">Get updated List</button>
-      </div>
-
-
-      <div>
-        <h2>Users Active in your chat</h2>
-        <ul id="addUsers">
-
-        </ul>
-      </div>
-
-    </div>
-
-  </section>
-  <section class="right-section" id="right-section">
-    <h3 id="roomMessage"></h3>
-    <div id="messageArea" class="messageArea">
-
-    </div>
-    <div id="chatInputDiv">
-      <label>
-        <input id="chatInput" type="text" placeholder="Enter Your message over here">
-      </label>
-      <button id="send" onclick="sendMessage()">send</button>
-    </div>
-
-
-  </section>
+<div id="Start">
+<img src="images/multiPlayer.png" alt="multiplayerLogo"/>
+<img id="robotImg" src="images/Designer.png" alt="humanVsCompLogo"/>
 </div>
+
+
 <footer class="footer">
   <p>CSCI 2020U: Software Development and Integration, Ontario tech University</p>
 </footer>
