@@ -156,7 +156,7 @@ function main() {
             console.log(`${currentPlayer.color} rolled: ${steps}`);
             movePlayer(currentPlayer, steps);
 
-            // Switch to the next player's turn
+            // Switch to the next player's turnaa
             currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 
             updateGame();
