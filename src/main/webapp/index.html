@@ -26,13 +26,13 @@
 <nav>
   <div class="nav-text" >Chat Server</div>
   <ul>
-    <li><a href="#" onclick="loadMultiplayer()">Games</a></li>
+    <li><a href="#" onclick="goBack()">Games</a></li>
     <li><a href="#" onclick="loadAbout()">About</a></li>
   </ul>
 </nav>
 <div id="Start">
-<img src="images/multiPlayer.png" alt="multiplayerLogo"/>
-<img id="robotImg" src="images/Designer.png" alt="humanVsCompLogo"/>
+<img src="images/multiPlayer.png" alt="multiplayerLogo" id="multiplayerImg"/>
+<img id="robotImg" src="images/Designer.png" alt="humanVsCompLogo" />
 </div>
 
 
@@ -60,7 +60,10 @@
     document.body.classList.toggle('dark-mode');
 
   });
+
   themeToggleBtn.setAttribute("class","btn");
+  document.getElementById("multiplayerImg").addEventListener('click',loadMultiplayer);
+  document.getElementById("robotImg").addEventListener('click',loadCompVsHuman);
 </script>
 
 </body>
