@@ -3,11 +3,17 @@ let divBody=document.getElementById("right-section").innerHTML;
 window.addEventListener("load", loadMainPage);
 function loadAbout(){
     //removing all event listeners before switching the page
-    let inputMessage=document.getElementById("chatInput");
-    inputMessage.removeEventListener("keyup", sendMessageUsingEnter);
-    divBody=document.getElementById("right-section").innerHTML;
-    document.getElementById("right-section").innerHTML='<object type="text/html" data="about.html" ' +
-        'width="100%" height="100%"></object>'
+    fetch('about.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('Start').innerHTML = html;
+            let inputMessage = document.getElementById('chatInput');
+            inputMessage.addEventListener('keyup', sendMessageUsingEnter);
+            console.log('Main');
+        })
+        .catch(error => {
+            console.error('Error loading Multiplayer.html:', error);
+        });
 
 
 }
@@ -15,14 +21,34 @@ function loadMainPage(){
 
 }
 function loadMultiplayer(){
-    //adding all event listeners  before switching the page
-    document.getElementById("right-section").innerHTML = divBody;
-    let inputMessage=document.getElementById("chatInput");
-    inputMessage.addEventListener("keyup", sendMessageUsingEnter);
-    console.log("Main");
+    console.log("Multiplayer");
+   // adding all event listeners  before switching the page
+    fetch('Multiplayer.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('Start').innerHTML = html;
+            let inputMessage = document.getElementById('chatInput');
+            inputMessage.addEventListener('keyup', sendMessageUsingEnter);
+            console.log('Main');
+        })
+        .catch(error => {
+            console.error('Error loading Multiplayer.html:', error);
+        });
 
 }
 
 function loadCompVsHuman(){
-
+    fetch('compVsPlayerSetup.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('Start').innerHTML = html;
+            let inputMessage = document.getElementById('chatInput');
+            inputMessage.addEventListener('keyup', sendMessageUsingEnter);
+        })
+        .catch(error => {
+            console.error('Error loading Multiplayer.html:', error);
+        });
+}
+function goBack(){
+    window.location.href = 'index.html';
 }
