@@ -1,5 +1,7 @@
 
 //getting canvas onjects
+
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 let currentPlayerIndex=0;
@@ -93,7 +95,10 @@ function drawPlayer(player) {
 function movePlayer(player, steps) {
     let newPosition = player.position + steps;
     let finalPosition = newPosition;
-
+    if(finalPosition==99){
+        ctx.clear()
+        ctx.write("player"+player.color+"has won")
+    }
     if (snakesAndLadders[newPosition]) {
         finalPosition = snakesAndLadders[newPosition];
     }
