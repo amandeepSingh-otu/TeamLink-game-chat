@@ -1,8 +1,6 @@
 class GameLogic {
     constructor(canvaId) {
         this.ctx = document.getElementById(canvaId).getContext('2d');
-        this.currentPlayerIndex = 0;
-
         this.tileSize = 50;
         this.numRows = 10;
         this.numCols = 10;
@@ -106,12 +104,8 @@ class GameLogic {
                 player.position = finalPosition;
                 clearInterval(animationInterval);
                 if(finalPosition>=99){
-                    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-
-                    // Display winning message
-                    this.ctx.font = "20px Arial";
-                    this.ctx.fillStyle = "red";
-                    this.ctx.fillText(`Player ${player.color} has won!`, 10, 50);
+                        //end game
+                    return true;
                 }
                 this.updateGame();
 
@@ -119,6 +113,7 @@ class GameLogic {
                 this.updateGame();
             }
         }, 50);
+        return false;
     }
 
     rollDice() {
@@ -130,21 +125,12 @@ class GameLogic {
         this.players.forEach(player => this.drawPlayer(player));
     }
 
-    main() {
+    main(stepSize,playerNumber) {
         this.updateGame();
-
-        document.addEventListener('keydown', event => {
-            if (event.key === ' ') {
-                event.preventDefault()
-                let currentPlayer = this.players[this.currentPlayerIndex];
-                let steps = this.rollDice();
-                console.log(`${currentPlayer.color} rolled: ${steps}`);
-                this.movePlayer(currentPlayer, steps);
-
-                this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-
-                this.updateGame();
-            }
-        });
+        let currentPlayer = this.players[playerNumber];
+        console.log(`${currentPlayer.color} rolled: ${stepSize}`);
+        let flagForGameOver= this.movePlayer(currentPlayer, stepSize);
+        this.updateGame();
+        return flagForGameOver;
     }
 }
