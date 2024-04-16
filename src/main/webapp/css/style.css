@@ -310,12 +310,13 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 
 
 #joiningMessage{
-    margin: 5px 0;
     max-height: 300px;
-    text-align:-webkit-center;
-    padding: 10px;
+    text-align:left;
     color:green;
     font-weight: bold;
+}
+#joiningMessage p{
+    text-align: left;
 }
 
 
