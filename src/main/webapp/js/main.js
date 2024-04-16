@@ -1,5 +1,9 @@
 let ws;
 let code;
+let gameLogic;
+function startGame(){
+    gameLogic = new GameLogic("canvaMulti");
+}
 function newRoom(){
     // calling the ChatServlet to retrieve a new room ID
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet";

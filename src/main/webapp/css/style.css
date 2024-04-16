@@ -6,7 +6,7 @@ body {
 nav {
     background-color: #03a9f4;
     color: #fff;
-    padding: 20px;
+    padding: 1%;
     position: fixed;
     width: 100%;
     top: 0;
@@ -14,7 +14,6 @@ nav {
     border-bottom:1px solid rgba(200, 198, 198, 0.82) ;
     font-size: 15px;
     display: flex;
-    padding: 20px 20px;
 
 }
 .nav-text{
@@ -49,7 +48,7 @@ nav ul li a:hover {
 .container {
     display: flex;
     min-height: 100vh;
-    padding-top: 50px;
+    padding-top: 5%;
 }
 .left-section h2{
     color: #fff;
@@ -96,21 +95,32 @@ nav ul li a:hover {
     flex: 1;
     background-color: #f6f6f6;
     overflow-y: auto;
-
     border: 1px solid rgba(200, 198, 198, 0.82);
-    width: 300px;
+    width: 30%;
     overflow-x: hidden;
     margin-top: 0.8%;
 }
 .right-section {
     flex: 1;
+    width: 30%;
     background-color: lightblue;
     overflow-y: auto;
     border: 2px solid #776e42;
     border-radius: 10px;
 }
+#gameBoardMP{
+    width: 40%;
+    flex:2;
+}
+#canvaMulti {
+    width: 90%;
+    height: 80%;
+    margin: 3%;
+    display: block;
+    border: 1px solid #ccc;
+}
 .right-section{
-    flex:3;
+    flex:1;
 }
 .footer {
     background-color: #333;
@@ -321,5 +331,20 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     height: 50%;
     max-width: 45%; /* Added maximum width to prevent images from becoming too wide */
     margin: 10%; /* Optional margin between the images */
+}
+#joinRoom {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+#joinRoom::placeholder {
+    color: #999;
+}
+
+#joinRoom:focus {
+    border-color: #007bff;
 }
 

@@ -9,6 +9,7 @@
       display: none;
     }
   </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="container" id="container">
@@ -24,7 +25,8 @@
             </div>
             <div id="roomNumberDiv">
                 <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
-                <button id="refresh" onclick="getRooms()">Get updated List</button>
+                <input id="joinRoom" type="text" placeholder="Enter Room ID" />
+                <button id="refresh" onclick="enterRoom()">Get updated List</button>
             </div>
 
 
@@ -39,7 +41,9 @@
 
     </section>
     <section id="gameBoardMP">
-
+            <canvas id="canvaMulti" width="500 cm" height="500 cm"></canvas>
+            <button id="rollTheDice" onclick="">Roll</button>
+            <button id="showNumber">*</button>
     </section>
     <section class="right-section" id="right-section">
         <h3 id="roomMessage"></h3>

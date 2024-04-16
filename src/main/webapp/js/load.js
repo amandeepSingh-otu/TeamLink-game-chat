@@ -1,4 +1,4 @@
-let divBody=document.getElementById("right-section").innerHTML;
+
 
 window.addEventListener("load", loadMainPage);
 function loadAbout(){
@@ -30,6 +30,8 @@ function loadMultiplayer(){
             let inputMessage = document.getElementById('chatInput');
             inputMessage.addEventListener('keyup', sendMessageUsingEnter);
             console.log('Main');
+               startGame();
+
         })
         .catch(error => {
             console.error('Error loading Multiplayer.html:', error);
@@ -42,8 +44,7 @@ function loadCompVsHuman(){
         .then(response => response.text())
         .then(html => {
             document.getElementById('Start').innerHTML = html;
-            let inputMessage = document.getElementById('chatInput');
-            inputMessage.addEventListener('keyup', sendMessageUsingEnter);
+            startGameComp();
         })
         .catch(error => {
             console.error('Error loading Multiplayer.html:', error);

@@ -1,170 +1,141 @@
+class GameLogic {
+    constructor(canvaId) {
+        this.ctx = document.getElementById(canvaId).getContext('2d');
+        this.currentPlayerIndex = 0;
 
-//getting canvas onjects
+        this.tileSize = 50;
+        this.numRows = 10;
+        this.numCols = 10;
 
+        this.players = [
+            { position: 0, color: 'black' },
+            { position: 0, color: 'blue' }
+        ];
 
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-let currentPlayerIndex=0;
+        this.snakesAndLadders = {
+            0: 37, 3: 13, 8: 30, 16: 6, 20: 41,
+            27: 83, 50: 66, 53: 33, 61: 17, 63: 59,
+            79: 98, 86: 35, 92: 72, 94: 74, 97: 78
+        };
 
-//this will set the number of rows, columsn and tilesize
-const tileSize = 50;
-const numRows = 10;
-const numCols = 10;
+        this.backgroundImage = new Image();
+        this.backgroundImage.src = 'images/snakeAndLadderBoard.png';
 
-const players = [
-    //at start both player gonna be at 0
-    { position: 0, color: 'black' },
-    { position: 0, color: 'blue' }
-];
+        this.backgroundImage.onload = () => {
+            this.main();
+        };
+    }
 
+    drawBoard() {
+        this.ctx.drawImage(this.backgroundImage, 0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
-/*we are storing the positions related with snakes and ladder on the board in a hashmap, so in each step we can
- check if we are on snake or ladder, if we are we gonna update the position accordingly*/
-const snakesAndLadders = {
-    0: 37,
-    3: 13,
-    8: 30,
-    16: 6,
-    20: 41,
-    27: 83,
-    50: 66,
-    53: 33,
-    61: 17,
-    63: 59,
-    79: 98,
-    86: 35,
-    92: 72,
-    94: 74,
-    97: 78
-};
+        for (let row = 0; row < this.numRows; row++) {
+            for (let col = 0; col < this.numCols; col++) {
+                let x = col * this.tileSize;
+                let y = row * this.tileSize;
 
-// Load the background image
-const backgroundImage = new Image();
-backgroundImage.src = 'snakeAndLadderBoard.png';
+                let cellNum;
 
-// Once the image is loaded, start the game
-backgroundImage.onload = function() {
-    main();
-};
-
-function drawBoard() {
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
-    for (let row = 0; row < numRows; row++) {
-        for (let col = 0; col < numCols; col++) {
-            let x = col * tileSize;
-            let y = row * tileSize;
-
-            let cellNum ;
-
-            //we are assigning them number according to our picture so it would be helpful to find a pattern
-            if (row % 2 === 0) {
-                //this will let you go in increasing order from left to right according to board
-                cellNum = ((row-10)*numCols+col)*-1;
-            } else {
-                //this will let you go in increasing order form right to left according to board
-                cellNum = ((9-row)*10+col+1);
+                if (row % 2 === 0) {
+                    cellNum = ((row - 10) * this.numCols + col) * -1;
+                } else {
+                    cellNum = ((9 - row) * 10 + col + 1);
+                }
             }
         }
     }
-}
 
-//we add player to the game
-function drawPlayer(player) {
-    let row = Math.floor(player.position / numCols);
-    let col;
+    drawPlayer(player) {
+        let row = Math.floor(player.position / this.numCols);
+        let col;
 
-    if (row % 2 === 0) {
-        // For even rows, calculate the column from left to right
-        col = player.position % numCols;
-    } else {
-        // For odd rows, calculate the column from right to left
-        col = numCols - 1 - (player.position % numCols);
-    }
-
-    let x = col * tileSize + tileSize / 2;
-    let y = (numRows - row - 1) * tileSize + tileSize / 2;
-
-    ctx.fillStyle = player.color;
-    ctx.beginPath();
-    ctx.arc(x, y, 20, 0, Math.PI * 2);
-    ctx.fill();
-}
-
-//gonna take ouput from the some other function and update the info according
-function movePlayer(player, steps) {
-    let newPosition = player.position + steps;
-    let finalPosition = newPosition;
-    if(finalPosition==99){
-        ctx.clear()
-        ctx.write("player"+player.color+"has won")
-    }
-    if (snakesAndLadders[newPosition]) {
-        finalPosition = snakesAndLadders[newPosition];
-    }
-
-    // Calculate cell coordinates for ending position
-    let endRow = Math.floor(finalPosition / numCols);
-    let endCol;
-    if (endRow % 2 === 0) {
-        endCol = finalPosition % numCols;
-    } else {
-        endCol = numCols - 1 - (finalPosition % numCols);
-    }
-
-    // Calculate pixel coordinates for ending position
-    let endX = endCol * tileSize + tileSize / 2;
-    let endY = (numRows - endRow - 1) * tileSize + tileSize / 2;
-
-    // Animation parameters
-    let animationSteps = 10; // Number of steps for the animation
-    let deltaX = (endX - player.x) / animationSteps;
-    let deltaY = (endY - player.y) / animationSteps;
-    let currentStep = 0;
-
-    // Animation loop
-    let animationInterval = setInterval(() => {
-        player.x += deltaX;
-        player.y += deltaY;
-        currentStep++;
-
-        if (currentStep >= animationSteps) {
-            player.position = finalPosition;
-            clearInterval(animationInterval);
-            updateGame();
+        if (row % 2 === 0) {
+            col = player.position % this.numCols;
         } else {
-            updateGame();
+            col = this.numCols - 1 - (player.position % this.numCols);
         }
-    }, 50);
-}
 
-function rollDice() {
-    return Math.floor(Math.random() * 6) + 1;
-}
+        let x = col * this.tileSize + this.tileSize / 2;
+        let y = (this.numRows - row - 1) * this.tileSize + this.tileSize / 2;
 
+        this.ctx.fillStyle = player.color;
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, 20, 0, Math.PI * 2);
+        this.ctx.fill();
+    }
 
-function updateGame() {
-    drawBoard();
-    players.forEach(player => drawPlayer(player));
-}
+    movePlayer(player, steps) {
+        let newPosition = player.position + steps;
+        let finalPosition = newPosition;
 
-function main() {
-    updateGame();
-
-
-    //to make it comply with backend we need to get data from other user, so we gonna get steps from other person and run
-    //steps over here
-    document.addEventListener('keydown', function(event) {
-        if (event.key === ' ') {
-            let currentPlayer = players[currentPlayerIndex];
-            let steps = rollDice();
-            console.log(`${currentPlayer.color} rolled: ${steps}`);
-            movePlayer(currentPlayer, steps);
-
-            // Switch to the next player's turnaa
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-
-            updateGame();
+        if (this.snakesAndLadders[newPosition]) {
+            finalPosition = this.snakesAndLadders[newPosition];
         }
-    });
+
+        let endRow = Math.floor(finalPosition / this.numCols);
+        let endCol;
+        if (endRow % 2 === 0) {
+            endCol = finalPosition % this.numCols;
+        } else {
+            endCol = this.numCols - 1 - (finalPosition % this.numCols);
+        }
+
+        let endX = endCol * this.tileSize + this.tileSize / 2;
+        let endY = (this.numRows - endRow - 1) * this.tileSize + this.tileSize / 2;
+
+        let animationSteps = 10;
+        let deltaX = (endX - player.x) / animationSteps;
+        let deltaY = (endY - player.y) / animationSteps;
+        let currentStep = 0;
+
+        let animationInterval = setInterval(() => {
+            player.x += deltaX;
+            player.y += deltaY;
+            currentStep++;
+
+            if (currentStep >= animationSteps) {
+                player.position = finalPosition;
+                clearInterval(animationInterval);
+                if(finalPosition>=99){
+                    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+                    // Display winning message
+                    this.ctx.font = "20px Arial";
+                    this.ctx.fillStyle = "red";
+                    this.ctx.fillText(`Player ${player.color} has won!`, 10, 50);
+                }
+                this.updateGame();
+
+            } else {
+                this.updateGame();
+            }
+        }, 50);
+    }
+
+    rollDice() {
+        return Math.floor(Math.random() * 6) + 1;
+    }
+
+    updateGame() {
+        this.drawBoard();
+        this.players.forEach(player => this.drawPlayer(player));
+    }
+
+    main() {
+        this.updateGame();
+
+        document.addEventListener('keydown', event => {
+            if (event.key === ' ') {
+                event.preventDefault()
+                let currentPlayer = this.players[this.currentPlayerIndex];
+                let steps = this.rollDice();
+                console.log(`${currentPlayer.color} rolled: ${steps}`);
+                this.movePlayer(currentPlayer, steps);
+
+                this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+
+                this.updateGame();
+            }
+        });
+    }
 }
