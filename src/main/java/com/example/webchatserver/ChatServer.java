@@ -35,17 +35,31 @@ public class    ChatServer {
                 roomList.remove(room.getValue().getCode());
             }
         }
+
         //check if room already exist or not
         if(roomList.containsKey(roomID)){
-            //we are putting user in the room , but they haven't entered the name yet
-            roomList.get(roomID).setUserName(userId,"");
+            if (roomList.get(roomID).getFlag()) {
+                try{
+                    session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"This room is full\"}");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    session.close();
+                }
+
+                return;
+            }
+            else {
+                //we are putting user in the room , but they haven't entered the name yet
+                roomList.get(roomID).setUserName(userId, "");
+            }
         }
         else{
             //room doesnot exist so creating a new room
             roomList.put(roomID,new ChatRoom(roomID,userId));
         }
 
-        session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"Enter your UserName below to get started\"}");
+        session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"Enter your UserName below to get started with the game\"}");
 
 
     }
@@ -88,7 +102,6 @@ public class    ChatServer {
         String roomId= (String) jsonmsg.get("roomId");
         String type = (String)  jsonmsg.get("type");
         String message = (String) jsonmsg.get("msg");
-        System.out.println(message);
 
         if(roomList.containsKey(roomId)){
             //if they don't have name this is their first message
@@ -112,7 +125,14 @@ public class    ChatServer {
                 for(Session peer: session.getOpenSessions()) {
                     if (roomList.get(roomId).inRoom(peer.getId())) {
                         //send message to people in same room
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\",\"userName\":\""+roomList.get(roomId).getUserName(userId)+"\", \"message\":\" " + message +"\"}");
+                        if(Objects.equals(type, "roll")) {
+                            if(peer.getId()!=session.getId()) {
+                                peer.getBasicRemote().sendText("{\"type\": \"roll\", \"message\":\" " + message + "\"}");
+                            }
+                        }
+                        else{
+                            peer.getBasicRemote().sendText("{\"type\": \"chat\",\"userName\":\"" + roomList.get(roomId).getUserName(userId) + "\", \"message\":\" " + message + "\"}");
+                        }
 
                     }
             }

@@ -1,11 +1,13 @@
 let ws;
 let code;
 let gameLogic;
+let gameturn;
 function startGame(){
     gameLogic = new GameLogic("canvaMulti");
 }
 function newRoom(){
     // calling the ChatServlet to retrieve a new room ID
+    //this function also assign the gameTurn depending on who created the room.
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet";
     clearMessageArea();
     fetch(callURL, {
@@ -15,7 +17,7 @@ function newRoom(){
         },
     })
         .then(response => response.text())
-        .then(response => enterRoom(response)); // enter the room with the code
+        .then(response => enterRoom(response)).then(response=>gameturn=true); // enter the room with the code
 }
 function clearMessageArea(){
     document.getElementById("messageArea").innerHTML = "";
@@ -41,6 +43,7 @@ function getUsers(){
     /*
     * This return the users in csv format like Aman, josiah, simon ......
     */
+   let  userList;
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/user-Inroom-servlets/"+code;
     fetch(callURL, {
         method: 'GET',
@@ -48,8 +51,9 @@ function getUsers(){
             'Accept': 'text/plain',
         },
     })
-        .then(response => response.text())
-        .then(response => addUsers(response));
+        .then(response => response.text()).then(response => addUsers(response));
+    return userList
+
 }
 
 //this will take the return response (user names) from api and split it and add to list
@@ -130,16 +134,24 @@ function enterRoom(response){
         // parsing the server's message as json
         let message = JSON.parse(event.data);
         // handle message
-
+        console.log(message.type,message.message);
         //Case we have a userName
         if (message.userName != null){
-            document.getElementById("messageArea").innerHTML +=
-                "<p><div class = messageHeader><span class='userName'>" +message.userName +
-                "</span><span class='timeStamp'>[" + timestamp() + "]</span></div> <span id=normalMsg'> " +
-                message.message + "</span></p>";
+
+                document.getElementById("messageArea").innerHTML +=
+                    "<p><div class = messageHeader><span class='userName'>" + message.userName +
+                    "</span><span class='timeStamp'>[" + timestamp() + "]</span></div> <span id=normalMsg'> " +
+                    message.message + "</span></p>";
+
         } else{
-            document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>"+ message.message + "<span class='timeStamp'>[" + timestamp() + "] </span> </p" +
-                ">";
+            if(message.type==="roll"){
+                gameLogic.main(parseInt(message.message),1)
+                turnFlag=false;
+            }
+            else {
+                document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>" + message.message + "<span class='timeStamp'>[" + timestamp() + "] </span> </p" +
+                    ">";
+            }
         }
 
         refresh();
@@ -153,7 +165,6 @@ sendMessageUsingEnter=function (event) {
     if (event.key === "Enter" && event.target.value!=='') {
         //we gonna send the room number in the message so it's easier on backend to identify the message
         let request = {"type": "chat","roomId":code, "msg": event.target.value};
-        console.log(request);
         if (ws.readyState === WebSocket.OPEN) {
             ws.send(JSON.stringify(request));
             event.target.value = "";
@@ -162,6 +173,17 @@ sendMessageUsingEnter=function (event) {
         }
     }
 };
+function sendRollNumber(steps){
+    refresh();
+    let request = {"type": "roll","roomId":code, "msg": steps.toString()};
+
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify(request));
+            console.log(request);
+        } else {
+            console.error("WebSocket connection not open.");
+        }
+}
 
 //Listen to the event of clicking send button and send message to the server
 function sendMessage(){
@@ -169,7 +191,7 @@ function sendMessage(){
     let inputMessage=document.getElementById("chatInput");
     if (inputMessage.value!=='') {
         let request = {"type": "chat","roomId":code, "msg": inputMessage.value};
-        console.log(request);
+
         if (ws.readyState === WebSocket.OPEN) {
             ws.send(JSON.stringify(request));
             inputMessage.value = "";
@@ -188,3 +210,32 @@ function refresh(){
     getUsers();
 }
 
+let gameLoopRunner;
+function gameLoop(){
+          gameLoopRunner=setInterval(function(){
+              if(gameLogic.gameOver()!==-1){
+                  //write what to do on ethe game over
+                  clearInterval(gameLoopRunner);
+              }
+              else {
+                  if (turnFlag === true) {
+                      document.getElementById('rollTheDice').disabled = false;
+                      document.getElementById('rollTheDice').onclick = sendRollNumber;
+                  } else {
+                      blockRollButton();
+                  }
+              }
+          },100)
+}
+
+
+function blockRollButton(){
+    document.getElementById('rollTheDice').disabled = true;
+    document.getElementById('rollTheDice').onclick = null;
+}
+function roll(){
+    let steps=gameLogic.rollDice();
+    sendRollNumber(steps);
+    gameLogic.main(steps,0)
+    turnFlag=false;
+}

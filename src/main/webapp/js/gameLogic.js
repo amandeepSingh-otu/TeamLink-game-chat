@@ -4,6 +4,7 @@ class GameLogic {
         this.tileSize = 50;
         this.numRows = 10;
         this.numCols = 10;
+        this.winner=-1;
 
         this.players = [
             { position: 0, color: 'black' },
@@ -28,9 +29,6 @@ class GameLogic {
         this.backgroundImage = new Image();
         this.backgroundImage.src = 'images/snakeAndLadderBoard.png';
 
-        this.backgroundImage.onload = () => {
-            this.main();
-        };
     }
 
     drawBoard() {
@@ -105,7 +103,7 @@ class GameLogic {
                 clearInterval(animationInterval);
                 if(finalPosition>=99){
                         //end game
-                    return true;
+                    this.winner=player.position;
                 }
                 this.updateGame();
 
@@ -113,7 +111,7 @@ class GameLogic {
                 this.updateGame();
             }
         }, 50);
-        return false;
+
     }
 
     rollDice() {
@@ -125,12 +123,14 @@ class GameLogic {
         this.players.forEach(player => this.drawPlayer(player));
     }
 
+    gameOver(){
+        return this.winner;
+    }
     main(stepSize,playerNumber) {
         this.updateGame();
         let currentPlayer = this.players[playerNumber];
         console.log(`${currentPlayer.color} rolled: ${stepSize}`);
-        let flagForGameOver= this.movePlayer(currentPlayer, stepSize);
+        this.movePlayer(currentPlayer, stepSize);
         this.updateGame();
-        return flagForGameOver;
     }
 }

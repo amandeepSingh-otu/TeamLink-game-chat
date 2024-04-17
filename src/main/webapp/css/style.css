@@ -50,6 +50,7 @@ nav ul li a:hover {
     min-height: 100vh;
     padding-top: 5%;
 }
+
 .left-section h2{
     color: #fff;
     background: #03a9f4;
@@ -111,7 +112,12 @@ nav ul li a:hover {
 #gameBoardMP{
     width: 40%;
     flex:2;
+    background-color: #8072c4;
 }
+#gameBoardMP.dark-mode {
+    background-color: #333;
+}
+
 #canvaMulti {
     width: 90%;
     height: 80%;
@@ -220,8 +226,6 @@ nav ul li a:hover {
 .userName{
     color: #25bcff;
     font-size: large;
-
-
 }
 
 .timeStamp{
@@ -235,7 +239,7 @@ nav ul li a:hover {
 
 body.dark-mode {
     background-color: #121212;
-    color: #931818;
+    color: #eee9e9;
 }
 
 body.dark-mode nav {
@@ -348,4 +352,31 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 #joinRoom:focus {
     border-color: #007bff;
 }
+#rollTheDice,
+#showNumber {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
 
+#rollTheDice:hover,
+#showNumber:hover {
+    background-color: #0056b3;
+}
+
+#rollTheDice:active,
+#showNumber:active {
+    background-color: #0056b3;
+    transform: translateY(1px);
+}
+
+#rollTheDice[disabled] {
+    background-color: #555;
+    color: #ccc;
+    cursor: not-allowed;
+}

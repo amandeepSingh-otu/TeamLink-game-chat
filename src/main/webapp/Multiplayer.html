@@ -25,8 +25,7 @@
             </div>
             <div id="roomNumberDiv">
                 <button id="createRoom" onclick="newRoom()">Create and Join Room</button>
-                <input id="joinRoom" type="text" placeholder="Enter Room ID" />
-                <button id="refresh" onclick="enterRoom()">Get updated List</button>
+                <button id="refresh" onclick="getRooms()">get updated list</button>
             </div>
 
 
@@ -36,14 +35,16 @@
 
                 </ul>
             </div>
+            <button id="rollTheDice" onclick="roll()">Roll</button>
+            <button id="showNumber">*</button>
 
         </div>
 
     </section>
     <section id="gameBoardMP">
+        <h3 style="margin:20px;">Your token color is black, try to beat the blue token</h3>
             <canvas id="canvaMulti" width="500 cm" height="500 cm"></canvas>
-            <button id="rollTheDice" onclick="">Roll</button>
-            <button id="showNumber">*</button>
+
     </section>
     <section class="right-section" id="right-section">
         <h3 id="roomMessage"></h3>
