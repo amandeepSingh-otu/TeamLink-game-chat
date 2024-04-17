@@ -11,6 +11,7 @@ import java.util.Map;
  * **/
 public class ChatRoom {
     private String  code;
+    private  boolean fullFlag=false;
 
     //each user has an unique ID associate to their ws session and their username
     private Map<String, String> users = new HashMap<String, String>() ;
@@ -31,7 +32,9 @@ public class ChatRoom {
     public String getUserName(String userid){
         return users.get(userid);
     }
-
+    public boolean getFlag(){
+        return users.size()>=2;
+    }
     public Map<String, String> getUsers() {
         return users;
     }

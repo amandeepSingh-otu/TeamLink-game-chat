@@ -6,7 +6,7 @@ body {
 nav {
     background-color: #03a9f4;
     color: #fff;
-    padding: 20px;
+    padding: 1%;
     position: fixed;
     width: 100%;
     top: 0;
@@ -14,7 +14,6 @@ nav {
     border-bottom:1px solid rgba(200, 198, 198, 0.82) ;
     font-size: 15px;
     display: flex;
-    padding: 20px 20px;
 
 }
 .nav-text{
@@ -49,8 +48,9 @@ nav ul li a:hover {
 .container {
     display: flex;
     min-height: 100vh;
-    padding-top: 50px;
+    padding-top: 5%;
 }
+
 .left-section h2{
     color: #fff;
     background: #03a9f4;
@@ -96,21 +96,39 @@ nav ul li a:hover {
     flex: 1;
     background-color: #f6f6f6;
     overflow-y: auto;
-
+    padding-left: 0.5%;
     border: 1px solid rgba(200, 198, 198, 0.82);
-    width: 300px;
+    width: 30%;
     overflow-x: hidden;
     margin-top: 0.8%;
+    position: relative;
 }
 .right-section {
     flex: 1;
+    width: 30%;
     background-color: lightblue;
     overflow-y: auto;
     border: 2px solid #776e42;
     border-radius: 10px;
 }
+#gameBoardMP{
+    width: 40%;
+    flex:2;
+    background-color: #8072c4;
+}
+#gameBoardMP.dark-mode {
+    background-color: #333;
+}
+
+#canvaMulti {
+    width: 90%;
+    height: 80%;
+    margin: 3%;
+    display: block;
+    border: 1px solid #ccc;
+}
 .right-section{
-    flex:3;
+    flex:1;
 }
 .footer {
     background-color: #333;
@@ -210,14 +228,11 @@ nav ul li a:hover {
 .userName{
     color: #25bcff;
     font-size: large;
-
-
 }
 
 .timeStamp{
     color: dimgrey;
     font-size: small;
-    color: #0d32ad;
     padding: 0.5%;
 
 }
@@ -225,7 +240,7 @@ nav ul li a:hover {
 
 body.dark-mode {
     background-color: #121212;
-    color: #931818;
+    color: #eee9e9;
 }
 
 body.dark-mode nav {
@@ -300,12 +315,13 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 
 
 #joiningMessage{
-    margin: 5px 0;
     max-height: 300px;
-    text-align:-webkit-center;
-    padding: 10px;
+    text-align:left;
     color:green;
     font-weight: bold;
+}
+#joiningMessage p{
+    text-align: left;
 }
 
 
@@ -313,13 +329,63 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* This will make the container take the full height of the viewport */
+    height: 100vh;
     background-color: #7f72bd;
 }
 
 #Start img {
     height: 50%;
-    max-width: 45%; /* Added maximum width to prevent images from becoming too wide */
-    margin: 10%; /* Optional margin between the images */
+    max-width: 45%;
+    margin: 10%;
+}
+#joinRoom {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+#joinRoom::placeholder {
+    color: #999;
+}
+
+#joinRoom:focus {
+    border-color: #007bff;
+}
+#rollTheDice{
+    padding: 10px 20px;
+    font-size: 16px;
+    width:50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#rollTheDice:hover{
+    background-color: #0056b3;
+}
+
+#rollTheDice:active{
+    background-color: #0056b3;
+    transform: translateY(1px);
+}
+
+#rollTheDice[disabled] {
+    background-color: #555;
+    color: #ccc;
+    cursor: not-allowed;
+}
+#diceCanvas {
+    position: absolute;
+    bottom: 20%;
+    left: 30%;
 }
 
