@@ -146,7 +146,9 @@ function enterRoom(response){
         } else{
             if(message.type==="roll"){
                 gameLogic.main(parseInt(message.message),1)
+                unBlockRollButton();
                 turnFlag=false;
+
             }
             else {
                 document.getElementById("messageArea").innerHTML += "<p id='joiningMessage'>" + message.message + "<span class='timeStamp'>[" + timestamp() + "] </span> </p" +
@@ -225,7 +227,7 @@ function gameLoop(){
                       blockRollButton();
                   }
               }
-          },100)
+          },10)
 }
 
 
@@ -233,9 +235,14 @@ function blockRollButton(){
     document.getElementById('rollTheDice').disabled = true;
     document.getElementById('rollTheDice').onclick = null;
 }
+function  unBlockRollButton(){
+    document.getElementById('rollTheDice').disabled = false;
+    document.getElementById('rollTheDice').onclick = roll;
+}
 function roll(){
     let steps=gameLogic.rollDice();
     sendRollNumber(steps);
     gameLogic.main(steps,0)
     turnFlag=false;
+    blockRollButton();
 }
