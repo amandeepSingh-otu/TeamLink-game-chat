@@ -18,7 +18,8 @@
         <div id="groups">
 
             <div>
-                <h2> Chats Available</h2>
+                <h2> Rooms currently playing or Waiting
+                For another player</h2>
                 <ul id="addRooms" class="rooms">
 
                 </ul>
@@ -30,19 +31,20 @@
 
 
             <div>
-                <h2>Users Active in your chat</h2>
+                <h2>player names</h2>
                 <ul id="addUsers">
 
                 </ul>
             </div>
-            <button id="rollTheDice" onclick="roll()">Roll</button>
-            <button id="showNumber">*</button>
+            <canvas id="diceCanvas" width="200" height="200"></canvas>
+            <button style="display: block" id="rollTheDice" onclick="roll()">Roll</button>
+
 
         </div>
 
     </section>
     <section id="gameBoardMP">
-        <h3 style="margin:20px;">Your token color is black, try to beat the blue token</h3>
+        <h3 style="margin:20px;">Your token color is black, try to beat the other player (blue token)</h3>
             <canvas id="canvaMulti" width="500 cm" height="500 cm"></canvas>
 
     </section>

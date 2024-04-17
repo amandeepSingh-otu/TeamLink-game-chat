@@ -96,10 +96,12 @@ nav ul li a:hover {
     flex: 1;
     background-color: #f6f6f6;
     overflow-y: auto;
+    padding-left: 0.5%;
     border: 1px solid rgba(200, 198, 198, 0.82);
     width: 30%;
     overflow-x: hidden;
     margin-top: 0.8%;
+    position: relative;
 }
 .right-section {
     flex: 1;
@@ -231,7 +233,6 @@ nav ul li a:hover {
 .timeStamp{
     color: dimgrey;
     font-size: small;
-    color: #0d32ad;
     padding: 0.5%;
 
 }
@@ -328,14 +329,14 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* This will make the container take the full height of the viewport */
+    height: 100vh;
     background-color: #7f72bd;
 }
 
 #Start img {
     height: 50%;
-    max-width: 45%; /* Added maximum width to prevent images from becoming too wide */
-    margin: 10%; /* Optional margin between the images */
+    max-width: 45%;
+    margin: 10%;
 }
 #joinRoom {
     padding: 10px;
@@ -352,25 +353,27 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 #joinRoom:focus {
     border-color: #007bff;
 }
-#rollTheDice,
-#showNumber {
+#rollTheDice{
     padding: 10px 20px;
     font-size: 16px;
+    width:50%;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%)
 }
 
-#rollTheDice:hover,
-#showNumber:hover {
+#rollTheDice:hover{
     background-color: #0056b3;
 }
 
-#rollTheDice:active,
-#showNumber:active {
+#rollTheDice:active{
     background-color: #0056b3;
     transform: translateY(1px);
 }
@@ -380,3 +383,9 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     color: #ccc;
     cursor: not-allowed;
 }
+#diceCanvas {
+    position: absolute;
+    bottom: 20%;
+    left: 30%;
+}
+
