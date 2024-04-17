@@ -31,6 +31,10 @@ class GameLogic {
 
         this.backgroundImage = new Image();
         this.backgroundImage.src = 'images/snakeAndLadderBoard.png';
+        this.backgroundImage.onload=()=> {
+            this.drawBoard();
+            this.updateGame();
+        }
 
     }
 
@@ -91,7 +95,7 @@ class GameLogic {
         let endX = endCol * this.tileSize + this.tileSize / 2;
         let endY = (this.numRows - endRow - 1) * this.tileSize + this.tileSize / 2;
 
-        let animationSteps = 10;
+        let animationSteps = 20;
         let deltaX = (endX - player.x) / animationSteps;
         let deltaY = (endY - player.y) / animationSteps;
         let currentStep = 0;

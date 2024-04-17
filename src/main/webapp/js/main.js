@@ -3,7 +3,6 @@ let code;
 let gameLogic;
 function startGame(){
     gameLogic = new GameLogic("canvaMulti");
-    gameLogic.updateGame();
     blockRollButton();
 }
 function newRoom(){
@@ -122,9 +121,10 @@ function enterRoom(response){
     code=response.substring(0,5)
 
 
-    // refresh the list of rooms to show a new room if you created in list
+
     if(ws!==undefined){
         ws.close();
+        startGame();
         ws=undefined;
    }
     // create the web socket
