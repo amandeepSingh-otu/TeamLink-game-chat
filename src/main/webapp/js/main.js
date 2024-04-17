@@ -1,13 +1,14 @@
 let ws;
 let code;
 let gameLogic;
-let gameturn;
 function startGame(){
     gameLogic = new GameLogic("canvaMulti");
+    gameLogic.updateGame();
+    blockRollButton();
 }
 function newRoom(){
     // calling the ChatServlet to retrieve a new room ID
-    //this function also assign the gameTurn depending on who created the room.
+    //this function also assign the  depending on who created the room.
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet";
     clearMessageArea();
     fetch(callURL, {
@@ -17,7 +18,7 @@ function newRoom(){
         },
     })
         .then(response => response.text())
-        .then(response => enterRoom(response)).then(response=>gameturn=true); // enter the room with the code
+        .then(response => enterRoom(response)).then(response=>unBlockRollButton()); // enter the room with the code
 }
 function clearMessageArea(){
     document.getElementById("messageArea").innerHTML = "";
@@ -43,6 +44,7 @@ function getUsers(){
     /*
     * This return the users in csv format like Aman, josiah, simon ......
     */
+
    let  userList;
     let callURL= "http://localhost:8080/WSChatServer-1.0-SNAPSHOT/user-Inroom-servlets/"+code;
     fetch(callURL, {
@@ -147,7 +149,6 @@ function enterRoom(response){
             if(message.type==="roll"){
                 gameLogic.main(parseInt(message.message),1)
                 unBlockRollButton();
-                turnFlag=false;
 
             }
             else {
@@ -219,14 +220,6 @@ function gameLoop(){
                   //write what to do on ethe game over
                   clearInterval(gameLoopRunner);
               }
-              else {
-                  if (turnFlag === true) {
-                      document.getElementById('rollTheDice').disabled = false;
-                      document.getElementById('rollTheDice').onclick = sendRollNumber;
-                  } else {
-                      blockRollButton();
-                  }
-              }
           },10)
 }
 
@@ -243,6 +236,5 @@ function roll(){
     let steps=gameLogic.rollDice();
     sendRollNumber(steps);
     gameLogic.main(steps,0)
-    turnFlag=false;
     blockRollButton();
 }
