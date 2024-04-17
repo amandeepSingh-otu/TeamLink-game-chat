@@ -1,5 +1,14 @@
-let gameLogicComp
+let singleGameLogic;
+
+document.addEventListener("DOMContentLoaded",function (){
+    singleGameLogic = new GameLogic("canvaSingle");
+    singleGameLogic.updateGame();
+});
 function startGameComp(){
-    gameLogic = new GameLogic("canvaSingle");
-    gameLogic.updateGame();
+    singleGameLogic = new GameLogic("canvaSingle");
+    singleGameLogic.updateGame();
+}
+
+function singleRoll(){
+    console.log("Roll worked");
 }
