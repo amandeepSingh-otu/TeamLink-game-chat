@@ -6,24 +6,19 @@ function startGameComp() {
     currentUser = 0;
     singleGameLogic = new GameLogic("canvaSingle");
     singleGameLogic.updateGame();
-    blockRollButton();
+    blockRollButtonSingle();
 
     console.log("Display Game works!")
 }
 
-function startGame(){
-    singleGameLogic = new GameLogic("canvaSingle");
-    singleGameLogic.updateGame();
-    unBlockRollButton();
-    console.log("Start Game works!")
-}
+
 
 
 
 function singleRoll(){
     let diceResult = singleGameLogic.rollDice();
     if(singleGameLogic.gameOver()!==-1){
-        blockRollButton();
+        blockRollButtonSingle();
     }
     else{
         singleGameLogic.main(diceResult,currentUser)
@@ -45,13 +40,13 @@ function aiTurn() {
 }
 
 //to block user from rolling the dice if it's not their turn
-function blockRollButton(){
-    document.getElementById('rollTheDice').disabled = true;
-    document.getElementById('rollTheDice').onclick = null;
+function blockRollButtonSingle(){
+    document.getElementById('singleDice').disabled = true;
+    document.getElementById('singleDice').onclick = null;
 }
 
 //unblock user when it is their turn
-function  unBlockRollButton(){
-    document.getElementById('rollTheDice').disabled = false;
-    document.getElementById('rollTheDice').onclick = roll;
+function  unBlockRollButtonSingle(){
+    document.getElementById('singleDice').disabled = false;
+    document.getElementById('singleDice').onclick = roll;
 }
