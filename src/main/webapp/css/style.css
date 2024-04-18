@@ -48,7 +48,7 @@ nav ul li a:hover {
 .container {
     display: flex;
     min-height: 100vh;
-    padding-top: 5%;
+    padding-top: 10%;
 }
 
 .left-section h2{
@@ -186,34 +186,98 @@ nav ul li a:hover {
     border-color: #fff;
 
 }
+img{
+    cursor: pointer;
+}
 #send{
     height: 100%;
-    margin: 2%;
-    font-size: 14px;
-    width:10%
+    font-size: 11px;
+    width:25%;
+    color: #fff;
+    background: #03a9f4;
+
+    border:  solid ;
+    border-radius: 20px;
+    border-color:#03a9f4 ;
+    cursor: pointer;
+
+    transition: 0.5s;
+
+}
+#send:hover{
+    color: #03a9f4;
+    background: #fff;
+
+    font-size: 11px;
+    border:  solid ;
+    border-radius: 27px;
+    cursor: pointer;
+
+
+    transform: scale(1.1);
+    border-color: #fff;
+
+
 }
 #chatInput{
-    width: 80%;
+    width: 70%;
+
     height: 100%;
     padding: 2px;
     margin: 2px;
     font-size: 14px;
 }
+.comVsHumaPage{
+    display: flex;
+    flex-direction: row;
+    margin: 5%;
+    margin-top: 7%;
+    justify-content: center;
+    align-items: center;
+
+}
+.singleDice{
+    margin-left: 10%;
+    cursor: pointer;
+    width: 60vh;
+    height: 5vh;
+    background-color: #03a9f4;
+    color:#fff ;
+    border: solid;
+    border-radius: 20px;
+    border-color: #03a9f4;
+    transition:0.5s;
+
+}
+.singleDice:hover{
+    background-color:#fff ;
+    color:#03a9f4 ;
+    border-color: #fff;
+    transform: scale(1.1);
+    
+
+}
 #chatInputDiv{
-    width:75%;
-    height:3%;
+
+
+    height:5%;
     padding: 0.25%;
     position: fixed;
     bottom:15%;
     z-index: 1000;
     margin: 0 auto;
+    margin-top: 2%;
     text-align: center;
     border-top:2px solid #776e42;
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+    align-items: center;
 }
 
 .messageArea{
     background-color: lightblue;
-    width: 150vh;
+    /*width: 150vh;*/
     height: 60vh;
     overflow-y: auto;
     padding-left: 2%;
@@ -353,7 +417,7 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 #joinRoom:focus {
     border-color: #007bff;
 }
-#rollTheDice,#singleDice{
+#rollTheDice{
     padding: 10px 20px;
     font-size: 16px;
     width:50%;
@@ -369,7 +433,7 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     transform: translateX(-10%)
 }
 
-#rollTheDice:hover, #singleDice:hover{
+#rollTheDice:hover{
     background-color: #0056b3;
 }
 
