@@ -48,7 +48,7 @@ nav ul li a:hover {
 .container {
     display: flex;
     min-height: 100vh;
-    padding-top: 10%;
+    padding-top: 5%;
 }
 
 .left-section h2{
@@ -191,9 +191,10 @@ img{
     cursor: pointer;
 }
 #send{
-    height: 100%;
+    height: 80%;
     font-size: 11px;
-    width:25%;
+    width:150%;
+
     color: #fff;
     background: #03a9f4;
 
@@ -221,12 +222,12 @@ img{
 
 }
 #chatInput{
-    width: 70%;
-
+    width: 150%;
     height: 100%;
     padding: 2px;
     margin: 2px;
     font-size: 14px;
+    border-radius:10px;
 }
 .comVsHumaPage{
     display: flex;
@@ -255,11 +256,10 @@ img{
     color:#03a9f4 ;
     border-color: #fff;
     transform: scale(1.1);
-    
+
 
 }
 #chatInputDiv{
-
 
     height:5%;
     padding: 0.25%;
@@ -269,16 +269,12 @@ img{
     margin: 0 auto;
     margin-top: 2%;
     text-align: center;
-    border-top:2px solid #776e42;
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-    align-items: center;
+
 }
 
 .messageArea{
     background-color: lightblue;
-    /*width: 150vh;*/
+    width: 150vh;
     height: 60vh;
     overflow-y: auto;
     padding-left: 2%;
@@ -344,13 +340,13 @@ body.dark-mode #createRoom, body.dark-mode #createRoom:hover,body.dark-mode #ref
     color: #e0e0e0;
     border-color: #e0e0e0;
 }
- body.dark-mode #createRoom:hover,body.dark-mode #refresh:hover{
-     background:#e0e0e0;
-     color: #333;
+body.dark-mode #createRoom:hover,body.dark-mode #refresh:hover{
+    background:#e0e0e0;
+    color: #333;
 
 
- }
- body.dark-mode .timeStamp, body.dark-mode #messageArea, body.dark-mode #roomMessage,body.dark-mode p
+}
+body.dark-mode .timeStamp, body.dark-mode #messageArea, body.dark-mode #roomMessage,body.dark-mode p
 {
     color: #e0e0e0;
 }
