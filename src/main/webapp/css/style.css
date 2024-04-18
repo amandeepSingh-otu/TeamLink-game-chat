@@ -452,4 +452,31 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     bottom: 20%;
     left: 30%;
 }
+.game-legend {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px; /* Adjust spacing between legend and canvas */
+}
 
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.player-dot {
+    background-color: blue;
+}
+
+.computer-dot {
+    background-color: black;
+}
