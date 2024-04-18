@@ -172,7 +172,6 @@ class GameLogic {
     main(stepSize,playerNumber) {
         this.updateGame();
         let currentPlayer = this.players[playerNumber];
-        console.log(`${currentPlayer.color} rolled: ${stepSize}`);
         this.movePlayer(currentPlayer, stepSize);
         this.updateGame();
     }
