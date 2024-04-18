@@ -20,7 +20,7 @@ function singleRoll(){
     else{
         singleGameLogic.main(diceResult,currentUser)
         diceResult = singleGameLogic.rollDice()
-        setTimeout(() => {  singleGameLogic.main(diceResult,1); unBlockRollButtonSingle();}, 2000)
+        setTimeout(() => {  singleGameLogic.main(diceResult,1); setTimeout(()=>{unBlockRollButtonSingle();},1000)}, 2000)
 
 
     }
