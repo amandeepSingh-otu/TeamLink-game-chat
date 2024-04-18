@@ -366,7 +366,7 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     position: absolute;
     bottom: 10%;
     left: 50%;
-    transform: translateX(-50%)
+    transform: translateX(-10%)
 }
 
 #rollTheDice:hover{
