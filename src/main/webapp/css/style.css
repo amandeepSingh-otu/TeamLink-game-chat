@@ -353,7 +353,7 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
 #joinRoom:focus {
     border-color: #007bff;
 }
-#rollTheDice{
+#rollTheDice,#singleDice{
     padding: 10px 20px;
     font-size: 16px;
     width:50%;
@@ -369,16 +369,15 @@ body.dark-mode .btn:hover,body.dark-mode #send:hover{
     transform: translateX(-10%)
 }
 
-#rollTheDice:hover{
+#rollTheDice:hover, #singleDice:hover{
     background-color: #0056b3;
 }
 
-#rollTheDice:active{
+#rollTheDice:active, #singleDice:active{
     background-color: #0056b3;
-    transform: translateY(1px);
 }
 
-#rollTheDice[disabled] {
+#rollTheDice[disabled], #singleDice[disabled] {
     background-color: #555;
     color: #ccc;
     cursor: not-allowed;
