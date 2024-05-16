@@ -1,4 +1,5 @@
 # Snake and Ladder multiplayer game 
+This is a class assignment so please don't copy the code.
 [[Click to watch demonstration video]](https://drive.google.com/file/d/1Kbll2wJB0FjUMBdFWRSbpahJgDhwI7sx/view?usp=drive_link)
 
 ![img.png](src/main/webapp/images/StartReadme.png)![img_1.png](src/main/webapp/images/multiplayerReadme.png)![img_2.png](src/main/webapp/images/mutliplayerReadmeDark.png)![img_3.png](src/main/webapp/images/CompVsHumanReadme.png)
@@ -22,11 +23,11 @@
     - Manages connections, messages, and room memberships.
     - The backend code is improved from the assignment 2 code.
 
-## Group Members (Contribution)
-- Amandeep Singh (25%)
-- Simon Gotera Vargas (25%)
-- Josiah Jehoiakim Yap  (25%)
-- Tyler Valentini  (25%)
+## Group Members
+- Amandeep Singh
+- Simon Gotera Vargas
+- Josiah Jehoiakim Yap
+- Tyler Valentini
 
 ## Course concepts used in the projects
 
