@@ -1,5 +1,5 @@
 # Snake and Ladder multiplayer game 
-This is a class assignment so please don't copy the code.
+ ## This is a class assignment so please don't copy the code.
 [[Click to watch demonstration video]](https://drive.google.com/file/d/1Kbll2wJB0FjUMBdFWRSbpahJgDhwI7sx/view?usp=drive_link)
 
 ![img.png](src/main/webapp/images/StartReadme.png)![img_1.png](src/main/webapp/images/multiplayerReadme.png)![img_2.png](src/main/webapp/images/mutliplayerReadmeDark.png)![img_3.png](src/main/webapp/images/CompVsHumanReadme.png)
